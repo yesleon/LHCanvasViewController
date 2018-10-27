@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LHCanvasViewController" customModule="LHCanvasViewController" customModuleProvider="target">
             <connections>
                 <outlet property="canvasView" destination="ax7-eN-Lt9" id="C3b-6b-dPl"/>
+                <outlet property="colorButton" destination="MnP-dr-aeB" id="X3q-6N-OqT"/>
                 <outlet property="eraserButton" destination="qHT-j5-JSW" id="XcL-22-njR"/>
                 <outlet property="navigationBar" destination="1Mr-cB-siF" id="gJ6-n8-SFt"/>
                 <outlet property="penButton" destination="aWY-7l-k1x" id="0cV-ds-rvM"/>
@@ -78,6 +79,11 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="fl3-P9-iDo"/>
+                        <barButtonItem title="Color" id="MnP-dr-aeB">
+                            <connections>
+                                <action selector="didPressColorButton:" destination="-1" id="dhr-fy-o4R"/>
+                            </connections>
+                        </barButtonItem>
                     </items>
                 </toolbar>
             </subviews>

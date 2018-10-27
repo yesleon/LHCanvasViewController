@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import LHColorPickerController
 
 public protocol LHCanvasViewControllerDelegate: AnyObject {
     func canvasViewController(_ canvasVC: LHCanvasViewController, didSave image: UIImage)
@@ -24,6 +25,7 @@ open class LHCanvasViewController: UIViewController {
             eraserButton.isEnabled = strokeType != .eraser
         }
     }
+    private var strokeColor: UIColor = .black
 
     @IBOutlet private weak var navigationBar: UINavigationBar!
     @IBOutlet private weak var toolBar: UIToolbar!
@@ -33,6 +35,7 @@ open class LHCanvasViewController: UIViewController {
     @IBOutlet private weak var canvasView: LHCanvasView!
     @IBOutlet private weak var redoButton: UIBarButtonItem!
     @IBOutlet private weak var undoButton: UIBarButtonItem!
+    @IBOutlet private weak var colorButton: UIBarButtonItem!
     
     weak open var delegate: LHCanvasViewControllerDelegate?
     
@@ -72,6 +75,17 @@ open class LHCanvasViewController: UIViewController {
         strokeType = .eraser
     }
     
+    @IBAction func didPressColorButton(_ sender: UIBarButtonItem) {
+        let colorPicker = LHColorPickerController { color in
+            sender.tintColor = color
+            self.strokeColor = color
+        }
+        if let popoverController = colorPicker.popoverPresentationController {
+            popoverController.barButtonItem = sender
+        }
+        present(colorPicker, animated: true, completion: nil)
+    }
+    
     @IBAction private func didPressCancelButton(_ sender: Any) {
         delegate?.canvasViewControllerDidCancel(self)
     }
@@ -89,7 +103,7 @@ extension LHCanvasViewController: LHCanvasViewDelegate {
         switch strokeType {
         case .pen:
             return {
-                $0.setStrokeColor(.black)
+                $0.setStrokeColor(self.strokeColor)
             }
         case .eraser:
             return {
