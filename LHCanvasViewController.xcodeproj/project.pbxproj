@@ -20,6 +20,7 @@
 		71CE1DBA2183E8D9002C3930 /* LHCanvasViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LHCanvasViewController.swift; sourceTree = "<group>"; };
 		71CE1DBB2183E8D9002C3930 /* LHCanvasViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LHCanvasViewController.xib; sourceTree = "<group>"; };
 		71CE1DBC2183E8D9002C3930 /* LHCanvasView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LHCanvasView.swift; sourceTree = "<group>"; };
+		71CE1DC02183E92B002C3930 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +37,7 @@
 		71CE1DA52183E8C7002C3930 = {
 			isa = PBXGroup;
 			children = (
+				71CE1DC02183E92B002C3930 /* README.md */,
 				71CE1DB12183E8C7002C3930 /* LHCanvasViewController */,
 				71CE1DB02183E8C7002C3930 /* Products */,
 			);
