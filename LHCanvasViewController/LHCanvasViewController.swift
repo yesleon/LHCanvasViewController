@@ -71,10 +71,7 @@ open class LHCanvasViewController: UIViewController {
     }
     
     @IBAction private func didPressUndoButton(_ sender: UIBarButtonItem) {
-        let undoMenuController = LHUndoMenuController(undoManager: canvasView.undoManager)
-        if let popoverController = undoMenuController.popoverPresentationController {
-            popoverController.barButtonItem = sender
-        }
+        let undoMenuController = LHUndoMenuController(undoManager: canvasView.undoManager, barButtonItem: sender)
         present(undoMenuController, animated: true, completion: nil)
     }
     
