@@ -34,7 +34,7 @@ open class LHCanvasViewController: UIViewController {
     
     weak open var delegate: LHCanvasViewControllerDelegate?
     
-    init() {
+    public init() {
         super.init(nibName: nil, bundle: Bundle.init(for: LHCanvasViewController.self))
     }
     
