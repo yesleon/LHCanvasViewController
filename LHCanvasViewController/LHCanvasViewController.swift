@@ -52,6 +52,7 @@ open class LHCanvasViewController: UIViewController {
         
         canvasView.delegate = self
         strokeType = .pen
+        strokeColor = .black
         updateButtons()
         navigationBar.delegate = self
         toolBar.delegate = self

@@ -43,10 +43,22 @@ open class LHCanvasView: UIView {
         return true
     }
     
-    private var penPoint: CGPoint? {
+    struct PenPhase {
+        var location: CGPoint
+        var velocity: CGPoint
+        
+        func controlPoint(handleLength: CGFloat) -> CGPoint {
+            let handleAngle = CGVector(point: velocity).angle()
+            let handle = CGVector(angle: handleAngle) * handleLength
+            return location.applying(handle)
+        }
+    }
+    
+    private var oldLocation: CGPoint = .zero
+    private var penPhase: PenPhase? {
         didSet {
-            guard let startPoint = oldValue, let endPoint = penPoint else { return }
-            drawLine(from: startPoint, to: endPoint)
+            guard let startPhase = oldValue, let endPhase = penPhase else { return }
+            drawLine(from: startPhase, to: endPhase)
         }
     }
     
@@ -107,13 +119,15 @@ open class LHCanvasView: UIView {
             
             UIGraphicsBeginImageContextWithOptions(bounds.size, true, 0)
             configureLine(with: delegate?.lineConfigurator(for: self))
-            penPoint = sender.location(in: self)
+            oldLocation = sender.location(in: self)
             
         case .changed:
-            penPoint = sender.location(in: self)
+            penPhase = PenPhase(location: oldLocation, velocity: sender.velocity(in: self))
+            oldLocation = sender.location(in: self)
             
         case .ended:
-            penPoint = nil
+            penPhase = nil
+            
             UIGraphicsEndImageContext()
             
             delegate?.canvasViewDidChange(self)
@@ -136,7 +150,7 @@ open class LHCanvasView: UIView {
         }
     }
     
-    private func drawLine(from startPoint: CGPoint, to endPoint: CGPoint) {
+    private func drawLine(from startPhase: PenPhase, to endPhase: PenPhase) {
         guard let context = UIGraphicsGetCurrentContext() else { return }
         
         if let image = imageView.image {
@@ -146,7 +160,12 @@ open class LHCanvasView: UIView {
             context.fill(bounds)
         }
         
-        context.addLines(between: [startPoint, endPoint])
+        context.move(to: startPhase.location)
+        let ratio: CGFloat = 250
+        let control1 = startPhase.controlPoint(handleLength: CGVector(point: startPhase.velocity).distance() / ratio)
+        let control2 = endPhase.controlPoint(handleLength: -CGVector(point: endPhase.velocity).distance() / ratio)
+        
+        context.addCurve(to: endPhase.location, control1: control1, control2: control2)
         context.strokePath()
         
         imageView.image = UIGraphicsGetImageFromCurrentImageContext()
@@ -162,4 +181,40 @@ open class LHCanvasView: UIView {
         }
     }
 
+}
+
+extension CGPoint {
+    
+    func vector(to point: CGPoint) -> CGVector {
+        return CGVector(dx: point.x - x, dy: point.y - y)
+    }
+    
+    func applying(_ vector: CGVector) -> CGPoint {
+        return CGPoint(x: x + vector.dx, y: y + vector.dy)
+    }
+    
+}
+
+extension CGVector {
+    
+    static func *(lhs: CGVector, rhs: CGFloat) -> CGVector {
+        return CGVector(dx: lhs.dx * rhs, dy: lhs.dy * rhs)
+    }
+    
+    func distance() -> CGFloat {
+        return ((dx * dx) + (dy * dy)).squareRoot()
+    }
+    
+    func angle() -> CGFloat {
+        return atan2(dy, dx)
+    }
+    
+    init(angle: CGFloat) {
+        self.init(dx: cos(angle), dy: sin(angle))
+    }
+    
+    init(point: CGPoint) {
+        self.init(dx: point.x, dy: point.y)
+    }
+    
 }
