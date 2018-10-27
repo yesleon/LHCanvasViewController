@@ -25,6 +25,8 @@ open class LHCanvasViewController: UIViewController {
         }
     }
 
+    @IBOutlet private weak var navigationBar: UINavigationBar!
+    @IBOutlet private weak var toolBar: UIToolbar!
     @IBOutlet private weak var penButton: UIBarButtonItem!
     @IBOutlet private weak var eraserButton: UIBarButtonItem!
     @IBOutlet private weak var saveButton: UIBarButtonItem!
@@ -48,6 +50,10 @@ open class LHCanvasViewController: UIViewController {
         canvasView.delegate = self
         strokeType = .pen
         updateButtons()
+        navigationBar.delegate = self
+        toolBar.delegate = self
+        navigationBar.setBackgroundImage(UIImage(), for: .default)
+        toolBar.setBackgroundImage(UIImage(), forToolbarPosition: .any, barMetrics: .default)
     }
     
     @IBAction private func didPressUndoButton(_ sender: Any) {
@@ -101,6 +107,20 @@ extension LHCanvasViewController: LHCanvasViewDelegate {
     
     public func canvasViewDidChange(_ canvasView: LHCanvasView) {
         updateButtons()
+    }
+    
+}
+
+extension LHCanvasViewController: UINavigationBarDelegate, UIToolbarDelegate {
+    
+    public func position(for bar: UIBarPositioning) -> UIBarPosition {
+        if bar === navigationBar {
+            return .topAttached
+        } else if bar === toolBar {
+            return .bottom
+        } else {
+            return .any
+        }
     }
     
 }
