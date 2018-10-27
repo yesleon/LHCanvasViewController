@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7112660221842F340043A3B8 /* LHColorPickerController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7112660121842F340043A3B8 /* LHColorPickerController.framework */; };
+		7112661E218475D60043A3B8 /* LHUndoMenuController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7112661D218475D60043A3B8 /* LHUndoMenuController.framework */; };
 		71CE1DB42183E8C7002C3930 /* LHCanvasViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 71CE1DB22183E8C7002C3930 /* LHCanvasViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		71CE1DBD2183E8D9002C3930 /* LHCanvasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CE1DBA2183E8D9002C3930 /* LHCanvasViewController.swift */; };
 		71CE1DBE2183E8D9002C3930 /* LHCanvasViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71CE1DBB2183E8D9002C3930 /* LHCanvasViewController.xib */; };
@@ -16,6 +17,7 @@
 
 /* Begin PBXFileReference section */
 		7112660121842F340043A3B8 /* LHColorPickerController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = LHColorPickerController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7112661D218475D60043A3B8 /* LHUndoMenuController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = LHUndoMenuController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71CE1DAF2183E8C7002C3930 /* LHCanvasViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LHCanvasViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71CE1DB22183E8C7002C3930 /* LHCanvasViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LHCanvasViewController.h; sourceTree = "<group>"; };
 		71CE1DB32183E8C7002C3930 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -30,6 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7112661E218475D60043A3B8 /* LHUndoMenuController.framework in Frameworks */,
 				7112660221842F340043A3B8 /* LHColorPickerController.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -40,6 +43,7 @@
 		7112660021842F340043A3B8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7112661D218475D60043A3B8 /* LHUndoMenuController.framework */,
 				7112660121842F340043A3B8 /* LHColorPickerController.framework */,
 			);
 			name = Frameworks;

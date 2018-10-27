@@ -17,7 +17,6 @@
                 <outlet property="eraserButton" destination="qHT-j5-JSW" id="XcL-22-njR"/>
                 <outlet property="navigationBar" destination="1Mr-cB-siF" id="gJ6-n8-SFt"/>
                 <outlet property="penButton" destination="aWY-7l-k1x" id="0cV-ds-rvM"/>
-                <outlet property="redoButton" destination="dGa-eS-Vza" id="Qlp-RP-KlV"/>
                 <outlet property="saveButton" destination="D7q-jn-jrT" id="ujB-OE-cPA"/>
                 <outlet property="toolBar" destination="hba-mm-5Fk" id="LtF-a5-a5I"/>
                 <outlet property="undoButton" destination="ftL-WQ-Zwb" id="beR-bz-oGQ"/>
@@ -46,14 +45,9 @@
                                         <action selector="didPressCancelButton:" destination="-1" id="PRa-BB-znQ"/>
                                     </connections>
                                 </barButtonItem>
-                                <barButtonItem systemItem="undo" id="ftL-WQ-Zwb">
+                                <barButtonItem title="Undo…" id="ftL-WQ-Zwb">
                                     <connections>
                                         <action selector="didPressUndoButton:" destination="-1" id="abG-Ox-YCt"/>
-                                    </connections>
-                                </barButtonItem>
-                                <barButtonItem systemItem="redo" id="dGa-eS-Vza">
-                                    <connections>
-                                        <action selector="didPressRedoButton:" destination="-1" id="MJL-2T-sOx"/>
                                     </connections>
                                 </barButtonItem>
                             </leftBarButtonItems>

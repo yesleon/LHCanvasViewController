@@ -8,6 +8,7 @@
 
 import UIKit
 import LHColorPickerController
+import LHUndoMenuController
 
 public protocol LHCanvasViewControllerDelegate: AnyObject {
     func canvasViewController(_ canvasVC: LHCanvasViewController, didSave image: UIImage)
@@ -37,7 +38,6 @@ open class LHCanvasViewController: UIViewController {
     @IBOutlet private weak var eraserButton: UIBarButtonItem!
     @IBOutlet private weak var saveButton: UIBarButtonItem!
     @IBOutlet private weak var canvasView: LHCanvasView!
-    @IBOutlet private weak var redoButton: UIBarButtonItem!
     @IBOutlet private weak var undoButton: UIBarButtonItem!
     @IBOutlet private weak var colorButton: UIBarButtonItem!
     
@@ -70,12 +70,12 @@ open class LHCanvasViewController: UIViewController {
         toolBar.setBackgroundImage(UIImage(), forToolbarPosition: .any, barMetrics: .default)
     }
     
-    @IBAction private func didPressUndoButton(_ sender: Any) {
-        canvasView.undoManager.undo()
-    }
-    
-    @IBAction private func didPressRedoButton(_ sender: Any) {
-        canvasView.undoManager.redo()
+    @IBAction private func didPressUndoButton(_ sender: UIBarButtonItem) {
+        let undoMenuController = LHUndoMenuController(undoManager: canvasView.undoManager)
+        if let popoverController = undoMenuController.popoverPresentationController {
+            popoverController.barButtonItem = sender
+        }
+        present(undoMenuController, animated: true, completion: nil)
     }
     
     @IBAction private func didPressPenButton(_ sender: Any) {
@@ -129,8 +129,6 @@ extension LHCanvasViewController: LHCanvasViewDelegate {
     
     private func updateButtons() {
         saveButton.isEnabled = canvasView.undoManager.canUndo
-        undoButton.isEnabled = canvasView.undoManager.canUndo
-        redoButton.isEnabled = canvasView.undoManager.canRedo
     }
     
     public func canvasViewDidChange(_ canvasView: LHCanvasView) {
