@@ -171,10 +171,13 @@ open class LHCanvasView: UIView {
         imageView.image = UIGraphicsGetImageFromCurrentImageContext()
     }
     
-    open func replaceImage(with image: UIImage?) {
+    open func replaceImage(with image: UIImage?, actionName: String? = nil) {
         let oldImage = imageView.image
         imageView.image = image
         
+        if let actionName = actionName {
+            undoManager.setActionName(actionName)
+        }
         undoManager.registerUndo(withTarget: self) { $0.replaceImage(with: oldImage) }
         DispatchQueue.main.async {
             self.delegate?.canvasViewDidChange(self)

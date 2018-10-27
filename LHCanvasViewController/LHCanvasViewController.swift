@@ -25,7 +25,11 @@ open class LHCanvasViewController: UIViewController {
             eraserButton.isEnabled = strokeType != .eraser
         }
     }
-    private var strokeColor: UIColor = .black
+    private var strokeColor: UIColor = .black {
+        didSet {
+            colorButton.tintColor = strokeColor
+        }
+    }
 
     @IBOutlet private weak var navigationBar: UINavigationBar!
     @IBOutlet private weak var toolBar: UIToolbar!
@@ -72,13 +76,16 @@ open class LHCanvasViewController: UIViewController {
         strokeType = .pen
     }
     
+    @IBAction private func didPressClearButton(_ sender: UIBarButtonItem) {
+        canvasView.replaceImage(with: nil, actionName: "Clear Canvas")
+    }
+    
     @IBAction private func didPressEraserButton(_ sender: Any) {
         strokeType = .eraser
     }
     
     @IBAction func didPressColorButton(_ sender: UIBarButtonItem) {
         let colorPicker = LHColorPickerController { color in
-            sender.tintColor = color
             self.strokeColor = color
         }
         if let popoverController = colorPicker.popoverPresentationController {
