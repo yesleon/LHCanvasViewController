@@ -8,7 +8,7 @@
 
 import UIKit
 import LHColorPickerController
-import LHUndoMenuController
+import LHMenuController
 
 public protocol LHCanvasViewControllerDelegate: AnyObject {
     func canvasViewController(_ canvasVC: LHCanvasViewController, didSave image: UIImage)
