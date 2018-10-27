@@ -43,8 +43,14 @@ open class LHCanvasViewController: UIViewController {
     
     weak open var delegate: LHCanvasViewControllerDelegate?
     
-    public init() {
+    public init(image: UIImage?) {
         super.init(nibName: nil, bundle: Bundle.init(for: LHCanvasViewController.self))
+        if let image = image {
+            loadViewIfNeeded()
+            canvasView.undoManager.disableUndoRegistration()
+            canvasView.replaceImage(with: image)
+            canvasView.undoManager.enableUndoRegistration()
+        }
     }
     
     required public init?(coder aDecoder: NSCoder) {
