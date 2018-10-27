@@ -49,7 +49,6 @@ open class LHCanvasView: UIView {
             drawLine(from: startPoint, to: endPoint)
         }
     }
-    private var lineConfigurator: LineConfigurationHandler?
     
     private lazy var imageView: UIImageView = {
         let imageView = LHCanvasView.imageViewClass.init()
@@ -59,7 +58,7 @@ open class LHCanvasView: UIView {
         return imageView
     }()
     
-    var image: UIImage? {
+    open var image: UIImage? {
         get {
             return imageView.image
         }
@@ -102,27 +101,45 @@ open class LHCanvasView: UIView {
     @objc private func didPan(_ sender: UIPanGestureRecognizer) {
         switch sender.state {
         case .began:
-            lineConfigurator = delegate?.lineConfigurator(for: self)
-            undoManager.beginUndoGrouping()
+            let oldImage = imageView.image
+            undoManager.setActionName("Draw Line")
+            undoManager.registerUndo(withTarget: self) { $0.replaceImage(with: oldImage) }
+            
+            UIGraphicsBeginImageContextWithOptions(bounds.size, true, 0)
+            configureLine(with: delegate?.lineConfigurator(for: self))
             penPoint = sender.location(in: self)
+            
         case .changed:
             penPoint = sender.location(in: self)
+            
         case .ended:
             penPoint = nil
-            undoManager.endUndoGrouping()
-            lineConfigurator = nil
+            UIGraphicsEndImageContext()
+            
             delegate?.canvasViewDidChange(self)
+            
         default:
             break
         }
     }
     
-    private func drawLine(from startPoint: CGPoint, to endPoint: CGPoint) {
-        
-        UIGraphicsBeginImageContextWithOptions(bounds.size, true, 0)
+    private func configureLine(with configurator: LineConfigurationHandler?) {
         guard let context = UIGraphicsGetCurrentContext() else { return }
         
-        if let image = image {
+        context.setLineCap(.round)
+        context.setStrokeColor(UIColor.black.cgColor)
+        context.setAlpha(1)
+        context.setLineJoin(.round)
+        context.setLineWidth(1)
+        if let configurator = configurator {
+            configurator(context)
+        }
+    }
+    
+    private func drawLine(from startPoint: CGPoint, to endPoint: CGPoint) {
+        guard let context = UIGraphicsGetCurrentContext() else { return }
+        
+        if let image = imageView.image {
             image.draw(in: bounds)
         } else {
             context.setFillColor(UIColor.white.cgColor)
@@ -130,35 +147,18 @@ open class LHCanvasView: UIView {
         }
         
         context.addLines(between: [startPoint, endPoint])
-        
-        context.setLineCap(.round)
-        context.setStrokeColor(UIColor.black.cgColor)
-        context.setAlpha(1)
-        context.setLineJoin(.round)
-        context.setLineWidth(1)
-        
-        if let configurator = lineConfigurator {
-            configurator(context)
-        }
-        
         context.strokePath()
         
-        replaceImage(with: UIGraphicsGetImageFromCurrentImageContext(), actionName: "Draw Line")
-        UIGraphicsEndImageContext()
+        imageView.image = UIGraphicsGetImageFromCurrentImageContext()
     }
     
-    public func replaceImage(with image: UIImage?, actionName: String?) {
+    open func replaceImage(with image: UIImage?) {
         let oldImage = imageView.image
         imageView.image = image
         
-        if let actionName = actionName {
-            undoManager.setActionName(actionName)
-        }
-        undoManager.registerUndo(withTarget: self) { $0.replaceImage(with: oldImage, actionName: nil) }
-        if undoManager.isRedoing || undoManager.isUndoing {
-            DispatchQueue.main.async {
-                self.delegate?.canvasViewDidChange(self)
-            }
+        undoManager.registerUndo(withTarget: self) { $0.replaceImage(with: oldImage) }
+        DispatchQueue.main.async {
+            self.delegate?.canvasViewDidChange(self)
         }
     }
 
