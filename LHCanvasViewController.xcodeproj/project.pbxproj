@@ -9,9 +9,10 @@
 /* Begin PBXBuildFile section */
 		711096492184A31900D1F8C5 /* LHMenuController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 711096482184A31900D1F8C5 /* LHMenuController.framework */; };
 		7112660221842F340043A3B8 /* LHColorPickerController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7112660121842F340043A3B8 /* LHColorPickerController.framework */; };
+		71B941522186BA35000091F0 /* LHCanvasViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71B941542186BA35000091F0 /* LHCanvasViewController.xib */; };
+		71B941592186BB73000091F0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 71B941572186BB73000091F0 /* Localizable.strings */; };
 		71CE1DB42183E8C7002C3930 /* LHCanvasViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 71CE1DB22183E8C7002C3930 /* LHCanvasViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		71CE1DBD2183E8D9002C3930 /* LHCanvasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CE1DBA2183E8D9002C3930 /* LHCanvasViewController.swift */; };
-		71CE1DBE2183E8D9002C3930 /* LHCanvasViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71CE1DBB2183E8D9002C3930 /* LHCanvasViewController.xib */; };
 		71CE1DBF2183E8D9002C3930 /* LHCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CE1DBC2183E8D9002C3930 /* LHCanvasView.swift */; };
 /* End PBXBuildFile section */
 
@@ -19,11 +20,13 @@
 		711096482184A31900D1F8C5 /* LHMenuController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = LHMenuController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7112660121842F340043A3B8 /* LHColorPickerController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = LHColorPickerController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7112661D218475D60043A3B8 /* LHUndoMenuController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = LHUndoMenuController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		71B941552186BA3F000091F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LHCanvasViewController.xib; sourceTree = "<group>"; };
+		71B941562186BA4C000091F0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LHCanvasViewController.strings"; sourceTree = "<group>"; };
+		71B941582186BB73000091F0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		71CE1DAF2183E8C7002C3930 /* LHCanvasViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LHCanvasViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71CE1DB22183E8C7002C3930 /* LHCanvasViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LHCanvasViewController.h; sourceTree = "<group>"; };
 		71CE1DB32183E8C7002C3930 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		71CE1DBA2183E8D9002C3930 /* LHCanvasViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LHCanvasViewController.swift; sourceTree = "<group>"; };
-		71CE1DBB2183E8D9002C3930 /* LHCanvasViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LHCanvasViewController.xib; sourceTree = "<group>"; };
 		71CE1DBC2183E8D9002C3930 /* LHCanvasView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LHCanvasView.swift; sourceTree = "<group>"; };
 		71CE1DC02183E92B002C3930 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -74,9 +77,10 @@
 			children = (
 				71CE1DBC2183E8D9002C3930 /* LHCanvasView.swift */,
 				71CE1DBA2183E8D9002C3930 /* LHCanvasViewController.swift */,
-				71CE1DBB2183E8D9002C3930 /* LHCanvasViewController.xib */,
+				71B941542186BA35000091F0 /* LHCanvasViewController.xib */,
 				71CE1DB22183E8C7002C3930 /* LHCanvasViewController.h */,
 				71CE1DB32183E8C7002C3930 /* Info.plist */,
+				71B941572186BB73000091F0 /* Localizable.strings */,
 			);
 			path = LHCanvasViewController;
 			sourceTree = "<group>";
@@ -133,6 +137,8 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
+				"zh-Hant",
 			);
 			mainGroup = 71CE1DA52183E8C7002C3930;
 			productRefGroup = 71CE1DB02183E8C7002C3930 /* Products */;
@@ -149,7 +155,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71CE1DBE2183E8D9002C3930 /* LHCanvasViewController.xib in Resources */,
+				71B941522186BA35000091F0 /* LHCanvasViewController.xib in Resources */,
+				71B941592186BB73000091F0 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,11 +174,32 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		71B941542186BA35000091F0 /* LHCanvasViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				71B941552186BA3F000091F0 /* Base */,
+				71B941562186BA4C000091F0 /* zh-Hant */,
+			);
+			name = LHCanvasViewController.xib;
+			sourceTree = "<group>";
+		};
+		71B941572186BB73000091F0 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				71B941582186BB73000091F0 /* zh-Hant */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		71CE1DB52183E8C7002C3930 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -220,7 +248,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -236,6 +264,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -278,7 +307,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

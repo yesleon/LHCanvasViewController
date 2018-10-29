@@ -80,7 +80,7 @@ open class LHCanvasViewController: UIViewController {
     }
     
     @IBAction private func didPressClearButton(_ sender: UIBarButtonItem) {
-        canvasView.replaceImage(with: nil, actionName: "Clear Canvas")
+        canvasView.replaceImage(with: nil, actionName: NSLocalizedString("Clear Canvas", comment: ""))
     }
     
     @IBAction private func didPressEraserButton(_ sender: Any) {

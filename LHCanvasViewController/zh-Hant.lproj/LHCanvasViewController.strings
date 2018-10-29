@@ -1,0 +1,15 @@
+/* Class = "UIBarButtonItem"; title = "Clear"; ObjectID = "3Fd-yU-DeV"; */
+"3Fd-yU-DeV.title" = "清除";
+
+/* Class = "UIBarButtonItem"; title = "Pen"; ObjectID = "aWY-7l-k1x"; */
+"aWY-7l-k1x.title" = "筆";
+
+/* Class = "UIBarButtonItem"; title = "Undo…"; ObjectID = "ftL-WQ-Zwb"; */
+"ftL-WQ-Zwb.title" = "復原⋯";
+
+/* Class = "UIBarButtonItem"; title = "Color"; ObjectID = "MnP-dr-aeB"; */
+"MnP-dr-aeB.title" = "顏色";
+
+/* Class = "UIBarButtonItem"; title = "Eraser"; ObjectID = "qHT-j5-JSW"; */
+"qHT-j5-JSW.title" = "橡皮擦";
+
