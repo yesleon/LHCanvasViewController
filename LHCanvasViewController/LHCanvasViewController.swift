@@ -117,6 +117,7 @@ extension LHCanvasViewController: LHCanvasViewDelegate {
         case .pen:
             return {
                 $0.setStrokeColor(self.strokeColor)
+                $0.setLineWidth(5)
             }
         case .eraser:
             return {

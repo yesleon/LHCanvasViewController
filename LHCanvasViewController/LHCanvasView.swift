@@ -118,7 +118,7 @@ open class LHCanvasView: UIView {
             undoManager.setActionName("Draw Line")
             undoManager.registerUndo(withTarget: self) { $0.replaceImage(with: oldImage) }
             
-            UIGraphicsBeginImageContextWithOptions(bounds.size, true, 0)
+            UIGraphicsBeginImageContextWithOptions(image?.size ?? CGSize(width: 1920, height: 1080), true, 1)
             configureLine(with: delegate?.lineConfigurator(for: self))
             oldLocation = sender.location(in: self)
             
@@ -145,7 +145,7 @@ open class LHCanvasView: UIView {
         context.setStrokeColor(UIColor.black.cgColor)
         context.setAlpha(1)
         context.setLineJoin(.round)
-        context.setLineWidth(1)
+        context.setLineWidth(5)
         if let configurator = configurator {
             configurator(context)
         }
@@ -153,20 +153,22 @@ open class LHCanvasView: UIView {
     
     private func drawLine(from startPhase: PenPhase, to endPhase: PenPhase) {
         guard let context = UIGraphicsGetCurrentContext() else { return }
-        
+        let rect = CGRect(x: 0, y: 0, width: context.width, height: context.height)
+        let ratio = rect.width / imageView.bounds.width
         if let image = imageView.image {
-            image.draw(in: bounds)
+            image.draw(in: rect)
         } else {
             context.setFillColor(UIColor.white.cgColor)
-            context.fill(bounds)
+            context.fill(rect)
         }
         
-        context.move(to: startPhase.location)
-        let ratio: CGFloat = 250
-        let control1 = startPhase.controlPoint(handleLength: CGVector(point: startPhase.velocity).distance() / ratio)
-        let control2 = endPhase.controlPoint(handleLength: -CGVector(point: endPhase.velocity).distance() / ratio)
+        let startPoint = startPhase.location * ratio
+        let endPoint = endPhase.location * ratio
+        let control1 = startPhase.controlPoint(handleLength: CGVector(point: startPhase.velocity).distance() / 250) * ratio
+        let control2 = endPhase.controlPoint(handleLength: -CGVector(point: endPhase.velocity).distance() / 250) * ratio
         
-        context.addCurve(to: endPhase.location, control1: control1, control2: control2)
+        context.move(to: startPoint)
+        context.addCurve(to: endPoint, control1: control1, control2: control2)
         context.strokePath()
         
         imageView.image = UIGraphicsGetImageFromCurrentImageContext()
