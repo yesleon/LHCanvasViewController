@@ -11,15 +11,15 @@ import UIKit
 class LHSliderViewController: UIViewController {
     
     private let slider: UISlider
-    private let rightLabel: UILabel
+    private let infoView: UIView?
     private let handler: (Float) -> Void
     
-    convenience init(min: Float, max: Float, current: Float, barButtonItem: UIBarButtonItem, handler: @escaping (Float) -> Void) {
-        self.init(min: min, max: max, current: current, handler: handler)
+    convenience init(min: Float, max: Float, current: Float, infoView: UIView?, barButtonItem: UIBarButtonItem, handler: @escaping (Float) -> Void) {
+        self.init(min: min, max: max, current: current, infoView: infoView, handler: handler)
         popoverPresentationController?.barButtonItem = barButtonItem
     }
     
-    init(min: Float, max: Float, current: Float, handler: @escaping (Float) -> Void) {
+    init(min: Float, max: Float, current: Float, infoView: UIView?, handler: @escaping (Float) -> Void) {
         let slider = UISlider()
         slider.minimumValue = min
         slider.maximumValue = max
@@ -27,13 +27,7 @@ class LHSliderViewController: UIViewController {
         self.slider = slider
         
         self.handler = handler
-        
-        let rightLabel = UILabel()
-        rightLabel.text = "\(Int(current))"
-        rightLabel.textAlignment = .center
-        rightLabel.addConstraint(.init(item: rightLabel, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .width, multiplier: 1, constant: 44))
-        self.rightLabel = rightLabel
-        
+        self.infoView = infoView
         super.init(nibName: nil, bundle: nil)
         
         slider.addTarget(self, action: #selector(sliderValueChanged), for: .valueChanged)
@@ -51,7 +45,10 @@ class LHSliderViewController: UIViewController {
     
     override func loadView() {
         super.loadView()
-        let stackView = UIStackView(arrangedSubviews: [slider, rightLabel])
+        let stackView = UIStackView(arrangedSubviews: [slider])
+        if let infoView = infoView {
+            stackView.addArrangedSubview(infoView)
+        }
         stackView.axis = .horizontal
         stackView.spacing = 8
         stackView.frame = view.bounds.insetBy(dx: 8, dy: 0)
@@ -60,7 +57,6 @@ class LHSliderViewController: UIViewController {
     }
     
     @objc private func sliderValueChanged(_ sender: UISlider) {
-        rightLabel.text = "\(Int(sender.value))"
         handler(sender.value)
     }
 

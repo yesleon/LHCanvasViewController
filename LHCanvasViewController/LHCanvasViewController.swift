@@ -97,13 +97,22 @@ open class LHCanvasViewController: UIViewController {
         if let popoverController = colorPicker.popoverPresentationController {
             popoverController.barButtonItem = sender
         }
+        presentedViewController?.dismiss(animated: false, completion: nil)
         present(colorPicker, animated: true, completion: nil)
     }
     
     @IBAction private func didPressSizeButton(_ sender: UIBarButtonItem) {
-        let sliderVC = LHSliderViewController(min: 1, max: 100, current: Float(strokeWidth), barButtonItem: sender) { value in
+        let circleView = LHCircleView()
+        let imageSize = canvasView.image?.size ?? CGSize(width: 1920, height: 1080)
+        circleView.color = strokeColor
+        let scale = imageSize.width / canvasView.bounds.width
+        circleView.circleSize = CGSize(width: strokeWidth / scale, height: strokeWidth / scale)
+        circleView.addConstraint(.init(item: circleView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .width, multiplier: 1, constant: 44))
+        let sliderVC = LHSliderViewController(min: 1, max: 100, current: Float(strokeWidth), infoView: circleView, barButtonItem: sender) { value in
             self.strokeWidth = CGFloat(value)
+            circleView.circleSize = CGSize(width: CGFloat(value) / scale, height: CGFloat(value) / scale)
         }
+        presentedViewController?.dismiss(animated: false, completion: nil)
         present(sliderVC, animated: true, completion: nil)
     }
     
