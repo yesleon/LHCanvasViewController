@@ -11,10 +11,42 @@
 		7112660221842F340043A3B8 /* LHColorPickerController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7112660121842F340043A3B8 /* LHColorPickerController.framework */; };
 		71B941522186BA35000091F0 /* LHCanvasViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71B941542186BA35000091F0 /* LHCanvasViewController.xib */; };
 		71B941592186BB73000091F0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 71B941572186BB73000091F0 /* Localizable.strings */; };
+		71B941912186C0F1000091F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B941902186C0F1000091F0 /* AppDelegate.swift */; };
+		71B941932186C0F1000091F0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B941922186C0F1000091F0 /* ViewController.swift */; };
+		71B941962186C0F1000091F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71B941942186C0F1000091F0 /* Main.storyboard */; };
+		71B941982186C0F2000091F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71B941972186C0F2000091F0 /* Assets.xcassets */; };
+		71B9419B2186C0F2000091F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71B941992186C0F2000091F0 /* LaunchScreen.storyboard */; };
+		71B941A02186C1BE000091F0 /* LHCanvasViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71B941542186BA35000091F0 /* LHCanvasViewController.xib */; };
+		71B941A12186C1C1000091F0 /* LHCanvasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CE1DBA2183E8D9002C3930 /* LHCanvasViewController.swift */; };
+		71B941A22186C1C4000091F0 /* LHCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CE1DBC2183E8D9002C3930 /* LHCanvasView.swift */; };
+		71B941A32186C1CF000091F0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 71B941572186BB73000091F0 /* Localizable.strings */; };
+		71B941A42186C238000091F0 /* LHMenuController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 711096482184A31900D1F8C5 /* LHMenuController.framework */; };
+		71B941A52186C238000091F0 /* LHMenuController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 711096482184A31900D1F8C5 /* LHMenuController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71B941A72186C23C000091F0 /* LHColorPickerController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7112660121842F340043A3B8 /* LHColorPickerController.framework */; };
+		71B941A82186C23C000091F0 /* LHColorPickerController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7112660121842F340043A3B8 /* LHColorPickerController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71B941AA2186C26F000091F0 /* LHConvenientMethods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71B941A92186C26F000091F0 /* LHConvenientMethods.framework */; };
+		71B941AB2186C27D000091F0 /* LHConvenientMethods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71B941A92186C26F000091F0 /* LHConvenientMethods.framework */; };
+		71B941AC2186C27D000091F0 /* LHConvenientMethods.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71B941A92186C26F000091F0 /* LHConvenientMethods.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		71CE1DB42183E8C7002C3930 /* LHCanvasViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 71CE1DB22183E8C7002C3930 /* LHCanvasViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		71CE1DBD2183E8D9002C3930 /* LHCanvasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CE1DBA2183E8D9002C3930 /* LHCanvasViewController.swift */; };
 		71CE1DBF2183E8D9002C3930 /* LHCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CE1DBC2183E8D9002C3930 /* LHCanvasView.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		71B941A62186C238000091F0 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				71B941AC2186C27D000091F0 /* LHConvenientMethods.framework in Embed Frameworks */,
+				71B941A82186C23C000091F0 /* LHColorPickerController.framework in Embed Frameworks */,
+				71B941A52186C238000091F0 /* LHMenuController.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		711096482184A31900D1F8C5 /* LHMenuController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = LHMenuController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -23,6 +55,14 @@
 		71B941552186BA3F000091F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LHCanvasViewController.xib; sourceTree = "<group>"; };
 		71B941562186BA4C000091F0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LHCanvasViewController.strings"; sourceTree = "<group>"; };
 		71B941582186BB73000091F0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		71B9418E2186C0F1000091F0 /* LHCanvasViewControllerExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LHCanvasViewControllerExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		71B941902186C0F1000091F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		71B941922186C0F1000091F0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		71B941952186C0F1000091F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		71B941972186C0F2000091F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		71B9419A2186C0F2000091F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		71B9419C2186C0F2000091F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		71B941A92186C26F000091F0 /* LHConvenientMethods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = LHConvenientMethods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71CE1DAF2183E8C7002C3930 /* LHCanvasViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LHCanvasViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71CE1DB22183E8C7002C3930 /* LHCanvasViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LHCanvasViewController.h; sourceTree = "<group>"; };
 		71CE1DB32183E8C7002C3930 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -32,10 +72,21 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		71B9418B2186C0F1000091F0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				71B941AB2186C27D000091F0 /* LHConvenientMethods.framework in Frameworks */,
+				71B941A72186C23C000091F0 /* LHColorPickerController.framework in Frameworks */,
+				71B941A42186C238000091F0 /* LHMenuController.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		71CE1DAC2183E8C7002C3930 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71B941AA2186C26F000091F0 /* LHConvenientMethods.framework in Frameworks */,
 				711096492184A31900D1F8C5 /* LHMenuController.framework in Frameworks */,
 				7112660221842F340043A3B8 /* LHColorPickerController.framework in Frameworks */,
 			);
@@ -47,6 +98,7 @@
 		7112660021842F340043A3B8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				71B941A92186C26F000091F0 /* LHConvenientMethods.framework */,
 				711096482184A31900D1F8C5 /* LHMenuController.framework */,
 				7112661D218475D60043A3B8 /* LHUndoMenuController.framework */,
 				7112660121842F340043A3B8 /* LHColorPickerController.framework */,
@@ -54,11 +106,25 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		71B9418F2186C0F1000091F0 /* LHCanvasViewControllerExample */ = {
+			isa = PBXGroup;
+			children = (
+				71B941902186C0F1000091F0 /* AppDelegate.swift */,
+				71B941922186C0F1000091F0 /* ViewController.swift */,
+				71B941942186C0F1000091F0 /* Main.storyboard */,
+				71B941972186C0F2000091F0 /* Assets.xcassets */,
+				71B941992186C0F2000091F0 /* LaunchScreen.storyboard */,
+				71B9419C2186C0F2000091F0 /* Info.plist */,
+			);
+			path = LHCanvasViewControllerExample;
+			sourceTree = "<group>";
+		};
 		71CE1DA52183E8C7002C3930 = {
 			isa = PBXGroup;
 			children = (
 				71CE1DC02183E92B002C3930 /* README.md */,
 				71CE1DB12183E8C7002C3930 /* LHCanvasViewController */,
+				71B9418F2186C0F1000091F0 /* LHCanvasViewControllerExample */,
 				71CE1DB02183E8C7002C3930 /* Products */,
 				7112660021842F340043A3B8 /* Frameworks */,
 			);
@@ -68,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				71CE1DAF2183E8C7002C3930 /* LHCanvasViewController.framework */,
+				71B9418E2186C0F1000091F0 /* LHCanvasViewControllerExample.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -99,6 +166,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		71B9418D2186C0F1000091F0 /* LHCanvasViewControllerExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 71B9419D2186C0F2000091F0 /* Build configuration list for PBXNativeTarget "LHCanvasViewControllerExample" */;
+			buildPhases = (
+				71B9418A2186C0F1000091F0 /* Sources */,
+				71B9418B2186C0F1000091F0 /* Frameworks */,
+				71B9418C2186C0F1000091F0 /* Resources */,
+				71B941A62186C238000091F0 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LHCanvasViewControllerExample;
+			productName = LHCanvasViewControllerExample;
+			productReference = 71B9418E2186C0F1000091F0 /* LHCanvasViewControllerExample.app */;
+			productType = "com.apple.product-type.application";
+		};
 		71CE1DAE2183E8C7002C3930 /* LHCanvasViewController */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 71CE1DB72183E8C7002C3930 /* Build configuration list for PBXNativeTarget "LHCanvasViewController" */;
@@ -123,9 +208,13 @@
 		71CE1DA62183E8C7002C3930 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 1000;
 				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = narrativesaw;
 				TargetAttributes = {
+					71B9418D2186C0F1000091F0 = {
+						CreatedOnToolsVersion = 10.0;
+					};
 					71CE1DAE2183E8C7002C3930 = {
 						CreatedOnToolsVersion = 10.0;
 					};
@@ -146,11 +235,24 @@
 			projectRoot = "";
 			targets = (
 				71CE1DAE2183E8C7002C3930 /* LHCanvasViewController */,
+				71B9418D2186C0F1000091F0 /* LHCanvasViewControllerExample */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		71B9418C2186C0F1000091F0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				71B941A32186C1CF000091F0 /* Localizable.strings in Resources */,
+				71B9419B2186C0F2000091F0 /* LaunchScreen.storyboard in Resources */,
+				71B941982186C0F2000091F0 /* Assets.xcassets in Resources */,
+				71B941A02186C1BE000091F0 /* LHCanvasViewController.xib in Resources */,
+				71B941962186C0F1000091F0 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		71CE1DAD2183E8C7002C3930 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -163,6 +265,17 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		71B9418A2186C0F1000091F0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				71B941A22186C1C4000091F0 /* LHCanvasView.swift in Sources */,
+				71B941A12186C1C1000091F0 /* LHCanvasViewController.swift in Sources */,
+				71B941932186C0F1000091F0 /* ViewController.swift in Sources */,
+				71B941912186C0F1000091F0 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		71CE1DAB2183E8C7002C3930 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -192,9 +305,63 @@
 			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
+		71B941942186C0F1000091F0 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				71B941952186C0F1000091F0 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		71B941992186C0F2000091F0 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				71B9419A2186C0F2000091F0 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		71B9419E2186C0F2000091F0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = K3ER26RU8S;
+				INFOPLIST_FILE = LHCanvasViewControllerExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.narrativesaw.LHCanvasViewControllerExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		71B9419F2186C0F2000091F0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = K3ER26RU8S;
+				INFOPLIST_FILE = LHCanvasViewControllerExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.narrativesaw.LHCanvasViewControllerExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		71CE1DB52183E8C7002C3930 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -376,6 +543,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		71B9419D2186C0F2000091F0 /* Build configuration list for PBXNativeTarget "LHCanvasViewControllerExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				71B9419E2186C0F2000091F0 /* Debug */,
+				71B9419F2186C0F2000091F0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		71CE1DA92183E8C7002C3930 /* Build configuration list for PBXProject "LHCanvasViewController" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
