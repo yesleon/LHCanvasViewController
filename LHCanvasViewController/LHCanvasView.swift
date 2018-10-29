@@ -55,7 +55,7 @@ open class LHCanvasView: UIView {
         }
     }
     
-    private var oldLocation: CGPoint = .zero
+    private var currentLocation: CGPoint = .zero
     private var penPhase: PenPhase? {
         didSet {
             guard let startPhase = oldValue, let endPhase = penPhase else { return }
@@ -87,6 +87,9 @@ open class LHCanvasView: UIView {
         panGesture.delaysTouchesBegan = false
         panGesture.delaysTouchesEnded = false
         addGestureRecognizer(panGesture)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTap))
+        addGestureRecognizer(tapGesture)
     }
     
     override init(frame: CGRect) {
@@ -110,21 +113,37 @@ open class LHCanvasView: UIView {
             resignFirstResponder()
         }
     }
+    
+    @objc private func didTap(_ sender: UITapGestureRecognizer) {
+        let oldImage = imageView.image
+        undoManager.setActionName(NSLocalizedString("Draw Line", comment: ""))
+        undoManager.registerUndo(withTarget: self) { $0.replaceImage(with: oldImage) }
+        
+        UIGraphicsBeginImageContextWithOptions(image?.size ?? CGSize(width: 1920, height: 1080), true, 1)
+        configureLine(with: delegate?.lineConfigurator(for: self))
+        penPhase = PenPhase(location: sender.location(in: self), velocity: .zero)
+        penPhase = PenPhase(location: sender.location(in: self), velocity: .zero)
+        penPhase = nil
+        UIGraphicsEndImageContext()
+        
+        delegate?.canvasViewDidChange(self)
+    }
 
     @objc private func didPan(_ sender: UIPanGestureRecognizer) {
         switch sender.state {
         case .began:
             let oldImage = imageView.image
-            undoManager.setActionName("Draw Line")
+            undoManager.setActionName(NSLocalizedString("Draw Line", comment: ""))
             undoManager.registerUndo(withTarget: self) { $0.replaceImage(with: oldImage) }
             
             UIGraphicsBeginImageContextWithOptions(image?.size ?? CGSize(width: 1920, height: 1080), true, 1)
             configureLine(with: delegate?.lineConfigurator(for: self))
-            oldLocation = sender.location(in: self)
+            
+            currentLocation = sender.location(in: self)
             
         case .changed:
-            penPhase = PenPhase(location: oldLocation, velocity: sender.velocity(in: self))
-            oldLocation = sender.location(in: self)
+            penPhase = PenPhase(location: currentLocation, velocity: sender.velocity(in: self))
+            currentLocation = sender.location(in: self)
             
         case .ended:
             penPhase = nil
