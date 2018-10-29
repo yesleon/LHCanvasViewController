@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		711096492184A31900D1F8C5 /* LHMenuController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 711096482184A31900D1F8C5 /* LHMenuController.framework */; };
 		7112660221842F340043A3B8 /* LHColorPickerController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7112660121842F340043A3B8 /* LHColorPickerController.framework */; };
+		715425BF2187025B009F33F3 /* LHSliderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715425BE2187025B009F33F3 /* LHSliderViewController.swift */; };
+		715425C02187025B009F33F3 /* LHSliderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715425BE2187025B009F33F3 /* LHSliderViewController.swift */; };
+		715425C12187025B009F33F3 /* LHSliderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715425BE2187025B009F33F3 /* LHSliderViewController.swift */; };
+		715425C321870E11009F33F3 /* LHCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715425C221870E11009F33F3 /* LHCircleView.swift */; };
+		715425C421870E11009F33F3 /* LHCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715425C221870E11009F33F3 /* LHCircleView.swift */; };
+		715425C521870E11009F33F3 /* LHCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715425C221870E11009F33F3 /* LHCircleView.swift */; };
 		71B941522186BA35000091F0 /* LHCanvasViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71B941542186BA35000091F0 /* LHCanvasViewController.xib */; };
 		71B941592186BB73000091F0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 71B941572186BB73000091F0 /* Localizable.strings */; };
 		71B941912186C0F1000091F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B941902186C0F1000091F0 /* AppDelegate.swift */; };
@@ -83,6 +89,8 @@
 		711096482184A31900D1F8C5 /* LHMenuController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = LHMenuController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7112660121842F340043A3B8 /* LHColorPickerController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = LHColorPickerController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7112661D218475D60043A3B8 /* LHUndoMenuController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = LHUndoMenuController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		715425BE2187025B009F33F3 /* LHSliderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHSliderViewController.swift; sourceTree = "<group>"; };
+		715425C221870E11009F33F3 /* LHCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHCircleView.swift; sourceTree = "<group>"; };
 		71B941552186BA3F000091F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LHCanvasViewController.xib; sourceTree = "<group>"; };
 		71B941562186BA4C000091F0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LHCanvasViewController.strings"; sourceTree = "<group>"; };
 		71B941582186BB73000091F0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -204,6 +212,8 @@
 			isa = PBXGroup;
 			children = (
 				71CE1DBC2183E8D9002C3930 /* LHCanvasView.swift */,
+				715425BE2187025B009F33F3 /* LHSliderViewController.swift */,
+				715425C221870E11009F33F3 /* LHCircleView.swift */,
 				71CE1DBA2183E8D9002C3930 /* LHCanvasViewController.swift */,
 				71B941542186BA35000091F0 /* LHCanvasViewController.xib */,
 				71CE1DB22183E8C7002C3930 /* LHCanvasViewController.h */,
@@ -363,10 +373,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				715425C421870E11009F33F3 /* LHCircleView.swift in Sources */,
 				71B941A22186C1C4000091F0 /* LHCanvasView.swift in Sources */,
 				71B941A12186C1C1000091F0 /* LHCanvasViewController.swift in Sources */,
 				71B941932186C0F1000091F0 /* ViewController.swift in Sources */,
 				71B941912186C0F1000091F0 /* AppDelegate.swift in Sources */,
+				715425C02187025B009F33F3 /* LHSliderViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,6 +388,8 @@
 			files = (
 				71B941F12186CB31000091F0 /* LHCanvasView.swift in Sources */,
 				71B941F02186CB11000091F0 /* LHCanvasViewController.swift in Sources */,
+				715425C521870E11009F33F3 /* LHCircleView.swift in Sources */,
+				715425C12187025B009F33F3 /* LHSliderViewController.swift in Sources */,
 				71B941E62186C787000091F0 /* MessagesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -385,6 +399,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				71CE1DBF2183E8D9002C3930 /* LHCanvasView.swift in Sources */,
+				715425BF2187025B009F33F3 /* LHSliderViewController.swift in Sources */,
+				715425C321870E11009F33F3 /* LHCircleView.swift in Sources */,
 				71CE1DBD2183E8D9002C3930 /* LHCanvasViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

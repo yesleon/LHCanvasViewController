@@ -31,6 +31,7 @@ open class LHCanvasViewController: UIViewController {
             colorButton.tintColor = strokeColor
         }
     }
+    private var strokeWidth: CGFloat = 5
 
     @IBOutlet private weak var navigationBar: UINavigationBar!
     @IBOutlet private weak var toolBar: UIToolbar!
@@ -89,7 +90,7 @@ open class LHCanvasViewController: UIViewController {
         strokeType = .eraser
     }
     
-    @IBAction func didPressColorButton(_ sender: UIBarButtonItem) {
+    @IBAction private func didPressColorButton(_ sender: UIBarButtonItem) {
         let colorPicker = LHColorPickerController { color in
             self.strokeColor = color
         }
@@ -97,6 +98,13 @@ open class LHCanvasViewController: UIViewController {
             popoverController.barButtonItem = sender
         }
         present(colorPicker, animated: true, completion: nil)
+    }
+    
+    @IBAction private func didPressSizeButton(_ sender: UIBarButtonItem) {
+        let sliderVC = LHSliderViewController(min: 1, max: 100, current: Float(strokeWidth), barButtonItem: sender) { value in
+            self.strokeWidth = CGFloat(value)
+        }
+        present(sliderVC, animated: true, completion: nil)
     }
     
     @IBAction private func didPressCancelButton(_ sender: Any) {
@@ -117,7 +125,7 @@ extension LHCanvasViewController: LHCanvasViewDelegate {
         case .pen:
             return {
                 $0.setStrokeColor(self.strokeColor)
-                $0.setLineWidth(5)
+                $0.setLineWidth(self.strokeWidth)
             }
         case .eraser:
             return {

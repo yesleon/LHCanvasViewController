@@ -77,6 +77,11 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="fl3-P9-iDo"/>
+                        <barButtonItem title="Size" id="VK7-LC-Var">
+                            <connections>
+                                <action selector="didPressSizeButton:" destination="-1" id="ag1-G5-q0M"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem title="Color" id="MnP-dr-aeB">
                             <connections>
                                 <action selector="didPressColorButton:" destination="-1" id="dhr-fy-o4R"/>
@@ -100,7 +105,7 @@
                 <constraint firstItem="ax7-eN-Lt9" firstAttribute="width" relation="lessThanOrEqual" secondItem="fnl-2z-Ty3" secondAttribute="width" id="yCq-Zs-c5K"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="53.600000000000001" y="47.226386806596707"/>
+            <point key="canvasLocation" x="52.5" y="46.478873239436624"/>
         </view>
     </objects>
 </document>
