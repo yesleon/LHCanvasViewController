@@ -67,7 +67,9 @@ open class LHCanvasViewController: UIViewController {
         navigationBar.delegate = self
         toolBar.delegate = self
         navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationBar.shadowImage = UIImage()
         toolBar.setBackgroundImage(UIImage(), forToolbarPosition: .any, barMetrics: .default)
+        toolBar.clipsToBounds = true
     }
     
     @IBAction private func didPressUndoButton(_ sender: UIBarButtonItem) {

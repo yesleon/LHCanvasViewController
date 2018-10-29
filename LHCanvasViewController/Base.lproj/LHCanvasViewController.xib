@@ -4,13 +4,12 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LHCanvasViewController" customModule="LHCanvasViewController" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LHCanvasViewController" customModule="Canvas" customModuleProvider="target">
             <connections>
                 <outlet property="canvasView" destination="ax7-eN-Lt9" id="C3b-6b-dPl"/>
                 <outlet property="colorButton" destination="MnP-dr-aeB" id="X3q-6N-OqT"/>
@@ -28,7 +27,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="ax7-eN-Lt9" customClass="LHCanvasView" customModule="LHCanvasViewController" customModuleProvider="target">
+                <view contentMode="scaleToFill" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="ax7-eN-Lt9" customClass="LHCanvasView" customModule="Canvas" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="194" width="320" height="180"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
