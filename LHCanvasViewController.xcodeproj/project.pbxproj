@@ -93,7 +93,6 @@
 		711096482184A31900D1F8C5 /* LHMenuController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = LHMenuController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7112660121842F340043A3B8 /* LHColorPickerController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = LHColorPickerController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7112661D218475D60043A3B8 /* LHUndoMenuController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = LHUndoMenuController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		715425BE2187025B009F33F3 /* LHSliderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHSliderViewController.swift; sourceTree = "<group>"; };
 		715425C221870E11009F33F3 /* LHCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHCircleView.swift; sourceTree = "<group>"; };
 		716B021821882F550030C963 /* LHSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHSlider.swift; sourceTree = "<group>"; };
 		71B941552186BA3F000091F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LHCanvasViewController.xib; sourceTree = "<group>"; };
@@ -221,7 +220,6 @@
 			isa = PBXGroup;
 			children = (
 				71CE1DBC2183E8D9002C3930 /* LHCanvasView.swift */,
-				715425BE2187025B009F33F3 /* LHSliderViewController.swift */,
 				715425C221870E11009F33F3 /* LHCircleView.swift */,
 				71CE1DBA2183E8D9002C3930 /* LHCanvasViewController.swift */,
 				716B021821882F550030C963 /* LHSlider.swift */,

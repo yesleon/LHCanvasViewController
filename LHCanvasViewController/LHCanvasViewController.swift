@@ -62,8 +62,7 @@ open class LHCanvasViewController: UIViewController {
         present(undoMenuController, animated: true, completion: nil)
     }
     
-    @IBAction private func didPressPenButton(_ sender: UIBarButtonItem) {
-        
+    private func makeBrushView() -> UIView {
         let circleView: LHCircleView = {
             let circleView = LHCircleView()
             let imageSize = canvasView.image?.size ?? CGSize(width: 1920, height: 1080)
@@ -98,9 +97,12 @@ open class LHCanvasViewController: UIViewController {
         let stackView = UIStackView(arrangedSubviews: [circleView, colorPickerView, slider])
         stackView.axis = .vertical
         stackView.addConstraint(.init(item: stackView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 44 * 5))
-        let popoverVC = LHPopoverViewController(containedView: stackView, popoverSource: .barButtonItem(sender))
+        return stackView
+    }
+    
+    @IBAction private func didPressPenButton(_ sender: UIBarButtonItem) {
         presentedViewController?.dismiss(animated: false, completion: nil)
-        present(popoverVC, animated: true, completion: nil)
+        present(LHPopoverViewController(containedView: makeBrushView(), popoverSource: .barButtonItem(sender)), animated: true, completion: nil)
     }
     
     @IBAction private func didPressClearButton(_ sender: UIBarButtonItem) {
