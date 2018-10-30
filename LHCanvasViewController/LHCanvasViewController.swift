@@ -120,12 +120,9 @@ open class LHCanvasViewController: UIViewController {
 
 extension LHCanvasViewController: LHCanvasViewDelegate {
     
-    public func lineConfigurator(for canvasView: LHCanvasView) -> LHCanvasView.LineConfigurationHandler? {
-        
-        return {
-            $0.setStrokeColor(self.strokeColor)
-            $0.setLineWidth(self.strokeWidth)
-        }
+    public func canvasView(_ canvasView: LHCanvasView, willStrokeWith configurator: LHLineConfigurating) {
+        configurator.setStrokeColor(strokeColor)
+        configurator.setLineWidth(strokeWidth)
     }
     
     private func updateButtons() {

@@ -10,7 +10,7 @@ import UIKit
 import LHConvenientMethods
 
 public protocol LHCanvasViewDelegate: AnyObject {
-    func lineConfigurator(for canvasView: LHCanvasView) -> LHCanvasView.LineConfigurationHandler?
+    func canvasView(_ canvasView: LHCanvasView, willStrokeWith configurator: LHLineConfigurating)
     func canvasViewDidChange(_ canvasView: LHCanvasView)
 }
 
@@ -38,7 +38,6 @@ open class LHCanvasView: UIView {
     override open var undoManager: UndoManager! {
         return localUndoManager
     }
-    public typealias LineConfigurationHandler = (LHLineConfigurating) -> Void
     
     override open var canBecomeFirstResponder: Bool {
         return true
@@ -120,7 +119,7 @@ open class LHCanvasView: UIView {
         undoManager.registerUndo(withTarget: self) { $0.replaceImage(with: oldImage) }
         
         UIGraphicsBeginImageContextWithOptions(image?.size ?? CGSize(width: 1920, height: 1080), true, 1)
-        configureLine(with: delegate?.lineConfigurator(for: self))
+        configureLine()
         penPhase = PenPhase(location: sender.location(in: self), velocity: .zero)
         penPhase = PenPhase(location: sender.location(in: self), velocity: .zero)
         penPhase = nil
@@ -137,7 +136,7 @@ open class LHCanvasView: UIView {
             undoManager.registerUndo(withTarget: self) { $0.replaceImage(with: oldImage) }
             
             UIGraphicsBeginImageContextWithOptions(image?.size ?? CGSize(width: 1920, height: 1080), true, 1)
-            configureLine(with: delegate?.lineConfigurator(for: self))
+            configureLine()
             
             currentLocation = sender.location(in: self)
             
@@ -157,7 +156,7 @@ open class LHCanvasView: UIView {
         }
     }
     
-    private func configureLine(with configurator: LineConfigurationHandler?) {
+    private func configureLine() {
         guard let context = UIGraphicsGetCurrentContext() else { return }
         
         context.setLineCap(.round)
@@ -165,9 +164,7 @@ open class LHCanvasView: UIView {
         context.setAlpha(1)
         context.setLineJoin(.round)
         context.setLineWidth(5)
-        if let configurator = configurator {
-            configurator(context)
-        }
+        delegate?.canvasView(self, willStrokeWith: context)
     }
     
     private func drawLine(from startPhase: PenPhase, to endPhase: PenPhase) {
