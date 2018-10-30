@@ -9,6 +9,7 @@
 import UIKit
 import LHColorPickerController
 import LHMenuController
+import LHPopoverViewController
 
 public protocol LHCanvasViewControllerDelegate: AnyObject {
     func canvasViewController(_ canvasVC: LHCanvasViewController, didSave image: UIImage)
@@ -17,30 +18,15 @@ public protocol LHCanvasViewControllerDelegate: AnyObject {
 
 open class LHCanvasViewController: UIViewController {
     
-    enum StrokeType {
-        case pen, eraser
-    }
-    private var strokeType: StrokeType = .pen {
-        didSet {
-            penButton.isEnabled = strokeType != .pen
-            eraserButton.isEnabled = strokeType != .eraser
-        }
-    }
-    private var strokeColor: UIColor = .black {
-        didSet {
-            colorButton.tintColor = strokeColor
-        }
-    }
+    private var strokeColor: UIColor = .black
     private var strokeWidth: CGFloat = 5
 
     @IBOutlet private weak var navigationBar: UINavigationBar!
     @IBOutlet private weak var toolBar: UIToolbar!
     @IBOutlet private weak var penButton: UIBarButtonItem!
-    @IBOutlet private weak var eraserButton: UIBarButtonItem!
     @IBOutlet private weak var saveButton: UIBarButtonItem!
     @IBOutlet private weak var canvasView: LHCanvasView!
     @IBOutlet private weak var undoButton: UIBarButtonItem!
-    @IBOutlet private weak var colorButton: UIBarButtonItem!
     
     weak open var delegate: LHCanvasViewControllerDelegate?
     
@@ -62,8 +48,6 @@ open class LHCanvasViewController: UIViewController {
         super.viewDidLoad()
         
         canvasView.delegate = self
-        strokeType = .pen
-        strokeColor = .black
         updateButtons()
         navigationBar.delegate = self
         toolBar.delegate = self
@@ -78,42 +62,49 @@ open class LHCanvasViewController: UIViewController {
         present(undoMenuController, animated: true, completion: nil)
     }
     
-    @IBAction private func didPressPenButton(_ sender: Any) {
-        strokeType = .pen
+    @IBAction private func didPressPenButton(_ sender: UIBarButtonItem) {
+        
+        let circleView: LHCircleView = {
+            let circleView = LHCircleView()
+            let imageSize = canvasView.image?.size ?? CGSize(width: 1920, height: 1080)
+            circleView.color = strokeColor
+            let scale = imageSize.width / canvasView.bounds.width
+            circleView.circleSize = CGSize(width: strokeWidth / scale, height: strokeWidth / scale)
+            circleView.addConstraint(.init(item: circleView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 44))
+            return circleView
+        }()
+        
+        let colorPickerView = LHColorPickerView { color in
+            self.strokeColor = color
+            circleView.color = color
+        }
+        
+        let slider: LHSlider = {
+            let scale: CGFloat = {
+                let imageSize = canvasView.image?.size ?? CGSize(width: 1920, height: 1080)
+                return imageSize.width / canvasView.bounds.width
+            }()
+            let slider = LHSlider { slider in
+                let value = CGFloat(slider.value)
+                self.strokeWidth = value
+                circleView.circleSize = CGSize(width: value / scale, height: value / scale)
+            }
+            slider.minimumValue = 1
+            slider.maximumValue = 100
+            slider.value = Float(strokeWidth)
+            return slider
+        }()
+        
+        let stackView = UIStackView(arrangedSubviews: [circleView, colorPickerView, slider])
+        stackView.axis = .vertical
+        stackView.addConstraint(.init(item: stackView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 44 * 5))
+        let popoverVC = LHPopoverViewController(containedView: stackView, popoverSource: .barButtonItem(sender))
+        presentedViewController?.dismiss(animated: false, completion: nil)
+        present(popoverVC, animated: true, completion: nil)
     }
     
     @IBAction private func didPressClearButton(_ sender: UIBarButtonItem) {
         canvasView.replaceImage(with: nil, actionName: NSLocalizedString("Clear Canvas", comment: ""))
-    }
-    
-    @IBAction private func didPressEraserButton(_ sender: Any) {
-        strokeType = .eraser
-    }
-    
-    @IBAction private func didPressColorButton(_ sender: UIBarButtonItem) {
-        let colorPicker = LHColorPickerController { color in
-            self.strokeColor = color
-        }
-        if let popoverController = colorPicker.popoverPresentationController {
-            popoverController.barButtonItem = sender
-        }
-        presentedViewController?.dismiss(animated: false, completion: nil)
-        present(colorPicker, animated: true, completion: nil)
-    }
-    
-    @IBAction private func didPressSizeButton(_ sender: UIBarButtonItem) {
-        let circleView = LHCircleView()
-        let imageSize = canvasView.image?.size ?? CGSize(width: 1920, height: 1080)
-        circleView.color = strokeColor
-        let scale = imageSize.width / canvasView.bounds.width
-        circleView.circleSize = CGSize(width: strokeWidth / scale, height: strokeWidth / scale)
-        circleView.addConstraint(.init(item: circleView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .width, multiplier: 1, constant: 44))
-        let sliderVC = LHSliderViewController(min: 1, max: 100, current: Float(strokeWidth), infoView: circleView, barButtonItem: sender) { value in
-            self.strokeWidth = CGFloat(value)
-            circleView.circleSize = CGSize(width: CGFloat(value) / scale, height: CGFloat(value) / scale)
-        }
-        presentedViewController?.dismiss(animated: false, completion: nil)
-        present(sliderVC, animated: true, completion: nil)
     }
     
     @IBAction private func didPressCancelButton(_ sender: Any) {
@@ -130,17 +121,10 @@ open class LHCanvasViewController: UIViewController {
 extension LHCanvasViewController: LHCanvasViewDelegate {
     
     public func lineConfigurator(for canvasView: LHCanvasView) -> LHCanvasView.LineConfigurationHandler? {
-        switch strokeType {
-        case .pen:
-            return {
-                $0.setStrokeColor(self.strokeColor)
-                $0.setLineWidth(self.strokeWidth)
-            }
-        case .eraser:
-            return {
-                $0.setStrokeColor(.white)
-                $0.setLineWidth(20)
-            }
+        
+        return {
+            $0.setStrokeColor(self.strokeColor)
+            $0.setLineWidth(self.strokeWidth)
         }
     }
     

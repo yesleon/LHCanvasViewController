@@ -8,9 +8,16 @@
 
 import UIKit
 
+@IBDesignable
 class LHCircleView: UIView {
     
-    var color: UIColor = .blue
+    @IBInspectable
+    var color: UIColor = .blue {
+        didSet {
+            setNeedsDisplay()
+        }
+    }
+    @IBInspectable
     var circleSize: CGSize = CGSize(width: 10, height: 10) {
         didSet {
             setNeedsDisplay()
