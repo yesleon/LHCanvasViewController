@@ -1,4 +1,4 @@
 #  LHSketchKit
 
-A simple sketch view controller.
+A simple sketch toolset.
 
