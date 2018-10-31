@@ -25,10 +25,6 @@
 		71B941A12186C1C1000091F0 /* LHCanvasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CE1DBA2183E8D9002C3930 /* LHCanvasViewController.swift */; };
 		71B941A22186C1C4000091F0 /* LHCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CE1DBC2183E8D9002C3930 /* LHCanvasView.swift */; };
 		71B941A32186C1CF000091F0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 71B941572186BB73000091F0 /* Localizable.strings */; };
-		71B941A42186C238000091F0 /* LHMenuController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 711096482184A31900D1F8C5 /* LHMenuController.framework */; };
-		71B941A52186C238000091F0 /* LHMenuController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 711096482184A31900D1F8C5 /* LHMenuController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		71B941A72186C23C000091F0 /* LHColorPickerController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7112660121842F340043A3B8 /* LHColorPickerController.framework */; };
-		71B941A82186C23C000091F0 /* LHColorPickerController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7112660121842F340043A3B8 /* LHColorPickerController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		71B941AA2186C26F000091F0 /* LHConvenientMethods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71B941A92186C26F000091F0 /* LHConvenientMethods.framework */; };
 		71B941AB2186C27D000091F0 /* LHConvenientMethods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71B941A92186C26F000091F0 /* LHConvenientMethods.framework */; };
 		71B941AC2186C27D000091F0 /* LHConvenientMethods.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71B941A92186C26F000091F0 /* LHConvenientMethods.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -37,13 +33,12 @@
 		71B941DC2186C712000091F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71B941DB2186C712000091F0 /* Assets.xcassets */; };
 		71B941E02186C712000091F0 /* Canvas.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 71B941D22186C711000091F0 /* Canvas.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		71B941E62186C787000091F0 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B941E52186C787000091F0 /* MessagesViewController.swift */; };
-		71B941E82186C8F4000091F0 /* LHColorPickerController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7112660121842F340043A3B8 /* LHColorPickerController.framework */; };
-		71B941E92186C8FC000091F0 /* LHMenuController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 711096482184A31900D1F8C5 /* LHMenuController.framework */; };
 		71B941F02186CB11000091F0 /* LHCanvasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CE1DBA2183E8D9002C3930 /* LHCanvasViewController.swift */; };
 		71B941F12186CB31000091F0 /* LHCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CE1DBC2183E8D9002C3930 /* LHCanvasView.swift */; };
 		71B941F22186CB3C000091F0 /* LHCanvasViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71B941542186BA35000091F0 /* LHCanvasViewController.xib */; };
-		71BB0520218814BB00F3C8E0 /* LHPopoverViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB051E218814A900F3C8E0 /* LHPopoverViewController.framework */; };
-		71BB0521218814BB00F3C8E0 /* LHPopoverViewController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB051E218814A900F3C8E0 /* LHPopoverViewController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71C3957F2189931F005D04F7 /* LHPopoverKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71AA1F8D21896B5200B5FC69 /* LHPopoverKit.framework */; };
+		71C395802189931F005D04F7 /* LHPopoverKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71AA1F8D21896B5200B5FC69 /* LHPopoverKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71C395812189932A005D04F7 /* LHPopoverKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71AA1F8D21896B5200B5FC69 /* LHPopoverKit.framework */; };
 		71CE1DB42183E8C7002C3930 /* LHSketchKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 71CE1DB22183E8C7002C3930 /* LHSketchKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		71CE1DBD2183E8D9002C3930 /* LHCanvasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CE1DBA2183E8D9002C3930 /* LHCanvasViewController.swift */; };
 		71CE1DBF2183E8D9002C3930 /* LHCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CE1DBC2183E8D9002C3930 /* LHCanvasView.swift */; };
@@ -70,9 +65,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				71B941AC2186C27D000091F0 /* LHConvenientMethods.framework in Embed Frameworks */,
-				71BB0521218814BB00F3C8E0 /* LHPopoverViewController.framework in Embed Frameworks */,
-				71B941A82186C23C000091F0 /* LHColorPickerController.framework in Embed Frameworks */,
-				71B941A52186C238000091F0 /* LHMenuController.framework in Embed Frameworks */,
+				71C395802189931F005D04F7 /* LHPopoverKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -130,9 +123,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				71B941AB2186C27D000091F0 /* LHConvenientMethods.framework in Frameworks */,
-				71BB0520218814BB00F3C8E0 /* LHPopoverViewController.framework in Frameworks */,
-				71B941A72186C23C000091F0 /* LHColorPickerController.framework in Frameworks */,
-				71B941A42186C238000091F0 /* LHMenuController.framework in Frameworks */,
+				71C3957F2189931F005D04F7 /* LHPopoverKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,8 +131,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71B941E92186C8FC000091F0 /* LHMenuController.framework in Frameworks */,
-				71B941E82186C8F4000091F0 /* LHColorPickerController.framework in Frameworks */,
+				71C395812189932A005D04F7 /* LHPopoverKit.framework in Frameworks */,
 				71B941D42186C711000091F0 /* Messages.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -224,9 +214,6 @@
 			children = (
 				71CE1DBA2183E8D9002C3930 /* LHCanvasViewController.swift */,
 				71B941542186BA35000091F0 /* LHCanvasViewController.xib */,
-				71CE1DB22183E8C7002C3930 /* LHSketchKit.h */,
-				71CE1DB32183E8C7002C3930 /* Info.plist */,
-				71B941572186BB73000091F0 /* Localizable.strings */,
 			);
 			path = LHCanvasViewController;
 			sourceTree = "<group>";
@@ -234,10 +221,13 @@
 		71CF05222189689B009E690D /* LHSketchKit */ = {
 			isa = PBXGroup;
 			children = (
+				71CE1DB22183E8C7002C3930 /* LHSketchKit.h */,
 				71CF051E21896846009E690D /* LHColorPickerView.swift */,
 				71CE1DBC2183E8D9002C3930 /* LHCanvasView.swift */,
 				715425C221870E11009F33F3 /* LHCircleView.swift */,
 				716B021821882F550030C963 /* LHSlider.swift */,
+				71CE1DB32183E8C7002C3930 /* Info.plist */,
+				71B941572186BB73000091F0 /* Localizable.strings */,
 			);
 			path = LHSketchKit;
 			sourceTree = "<group>";

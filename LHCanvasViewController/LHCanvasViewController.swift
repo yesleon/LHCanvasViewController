@@ -56,31 +56,53 @@ open class LHCanvasViewController: UIViewController {
     }
     
     @IBAction private func didPressUndoButton(_ sender: UIBarButtonItem) {
-        let undoMenuController = LHUndoMenuController(undoManager: canvasView.undoManager, barButtonItem: sender)
-        present(undoMenuController, animated: true, completion: nil)
+        let undoMenu = LHMenu()
+        undoMenu.addConstraint(.init(item: undoMenu, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 240))
+        func updateActions(undoManager: UndoManager) {
+            undoMenu.actions = [
+                .init(title: undoManager.undoMenuItemTitle, isEnabled: undoManager.canUndo, handler: { action in
+                    undoManager.undo()
+                    updateActions(undoManager: undoManager)
+                    return nil
+                }),
+                .init(title: undoManager.redoMenuItemTitle, isEnabled: undoManager.canRedo, handler: { action in
+                    undoManager.redo()
+                    updateActions(undoManager: undoManager)
+                    return nil
+                }),
+            ]
+        }
+        updateActions(undoManager: canvasView.undoManager)
+        let popoverVC = LHPopoverViewController(popoverSource: .barButtonItem(sender))
+        popoverVC.addManagedView(undoMenu)
+        present(popoverVC, animated: true, completion: nil)
     }
     
-    private func makeBrushView() -> UIView {
+    @IBAction private func didPressPenButton(_ sender: UIBarButtonItem) {
+        let penPanelVC = LHPopoverViewController(popoverSource: .barButtonItem(sender))
+        
+        let scale: CGFloat = {
+            let imageSize = canvasView.image?.size ?? CGSize(width: 1920, height: 1080)
+            return imageSize.width / canvasView.bounds.width
+        }()
+        
         let circleView: LHCircleView = {
             let circleView = LHCircleView()
-            let imageSize = canvasView.image?.size ?? CGSize(width: 1920, height: 1080)
             circleView.color = strokeColor
-            let scale = imageSize.width / canvasView.bounds.width
             circleView.circleSize = CGSize(width: strokeWidth / scale, height: strokeWidth / scale)
             circleView.addConstraint(.init(item: circleView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 44))
             return circleView
         }()
+        penPanelVC.addManagedView(circleView)
         
         let colorPickerView = LHColorPickerView { color in
             self.strokeColor = color
             circleView.color = color
         }
+        colorPickerView.addConstraint(.init(item: colorPickerView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 44 * 5))
+        penPanelVC.addManagedView(colorPickerView)
         
         let slider: LHSlider = {
-            let scale: CGFloat = {
-                let imageSize = canvasView.image?.size ?? CGSize(width: 1920, height: 1080)
-                return imageSize.width / canvasView.bounds.width
-            }()
             let slider = LHSlider { slider in
                 let value = CGFloat(slider.value)
                 self.strokeWidth = value
@@ -91,16 +113,10 @@ open class LHCanvasViewController: UIViewController {
             slider.value = Float(strokeWidth)
             return slider
         }()
+        penPanelVC.addManagedView(slider)
         
-        let stackView = UIStackView(arrangedSubviews: [circleView, colorPickerView, slider])
-        stackView.axis = .vertical
-        stackView.addConstraint(.init(item: stackView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 44 * 5))
-        return stackView
-    }
-    
-    @IBAction private func didPressPenButton(_ sender: UIBarButtonItem) {
         presentedViewController?.dismiss(animated: false, completion: nil)
-        present(LHPopoverViewController(containedView: makeBrushView(), popoverSource: .barButtonItem(sender)), animated: true, completion: nil)
+        present(penPanelVC, animated: true, completion: nil)
     }
     
     @IBAction private func didPressClearButton(_ sender: UIBarButtonItem) {
