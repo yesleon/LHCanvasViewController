@@ -1,4 +1,4 @@
-#  LHCanvasViewController
+#  LHSketchKit
 
 A simple sketch view controller.
 
