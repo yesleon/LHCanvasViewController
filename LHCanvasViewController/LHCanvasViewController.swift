@@ -56,30 +56,11 @@ open class LHCanvasViewController: UIViewController {
     }
     
     @IBAction private func didPressUndoButton(_ sender: UIBarButtonItem) {
-        let undoMenu = LHMenu()
-        undoMenu.addConstraint(.init(item: undoMenu, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 240))
-        func updateActions(undoManager: UndoManager) {
-            undoMenu.actions = [
-                .init(title: undoManager.undoMenuItemTitle, isEnabled: undoManager.canUndo, handler: { action in
-                    undoManager.undo()
-                    updateActions(undoManager: undoManager)
-                    return nil
-                }),
-                .init(title: undoManager.redoMenuItemTitle, isEnabled: undoManager.canRedo, handler: { action in
-                    undoManager.redo()
-                    updateActions(undoManager: undoManager)
-                    return nil
-                }),
-            ]
-        }
-        updateActions(undoManager: canvasView.undoManager)
-        let popoverVC = LHPopoverViewController(popoverSource: .barButtonItem(sender))
-        popoverVC.addManagedView(undoMenu)
-        present(popoverVC, animated: true, completion: nil)
+        presentUndoMenu(undoManager: canvasView.undoManager, popoverSource: .barButtonItem(sender))
     }
     
-    @IBAction private func didPressPenButton(_ sender: UIBarButtonItem) {
-        let penPanelVC = LHPopoverViewController(popoverSource: .barButtonItem(sender))
+    private func makePenPanelViewController(popoverSource: LHPopoverSource) -> UIViewController {
+        let penPanelVC = LHPopoverViewController(popoverSource: popoverSource)
         
         let scale: CGFloat = {
             let imageSize = canvasView.image?.size ?? CGSize(width: 1920, height: 1080)
@@ -115,8 +96,14 @@ open class LHCanvasViewController: UIViewController {
         }()
         penPanelVC.addManagedView(slider)
         
+        return penPanelVC
+    }
+    
+    @IBAction private func didPressPenButton(_ sender: UIBarButtonItem) {
+        let panelVC = makePenPanelViewController(popoverSource: .barButtonItem(sender))
+        
         presentedViewController?.dismiss(animated: false, completion: nil)
-        present(penPanelVC, animated: true, completion: nil)
+        present(panelVC, animated: true, completion: nil)
     }
     
     @IBAction private func didPressClearButton(_ sender: UIBarButtonItem) {
