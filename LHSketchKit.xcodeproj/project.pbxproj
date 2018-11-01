@@ -45,6 +45,9 @@
 		71CF051F21896847009E690D /* LHColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CF051E21896846009E690D /* LHColorPickerView.swift */; };
 		71CF052021896847009E690D /* LHColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CF051E21896846009E690D /* LHColorPickerView.swift */; };
 		71CF052121896847009E690D /* LHColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CF051E21896846009E690D /* LHColorPickerView.swift */; };
+		71FA9BDA218AED6F00308DEE /* LHCanvasBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FA9BD9218AED6F00308DEE /* LHCanvasBackgroundView.swift */; };
+		71FA9BDB218AED6F00308DEE /* LHCanvasBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FA9BD9218AED6F00308DEE /* LHCanvasBackgroundView.swift */; };
+		71FA9BDC218AED6F00308DEE /* LHCanvasBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FA9BD9218AED6F00308DEE /* LHCanvasBackgroundView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +118,7 @@
 		71CE1DBC2183E8D9002C3930 /* LHCanvasView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LHCanvasView.swift; sourceTree = "<group>"; };
 		71CE1DC02183E92B002C3930 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		71CF051E21896846009E690D /* LHColorPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LHColorPickerView.swift; sourceTree = "<group>"; };
+		71FA9BD9218AED6F00308DEE /* LHCanvasBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHCanvasBackgroundView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				71CE1DBA2183E8D9002C3930 /* LHCanvasViewController.swift */,
+				71FA9BD9218AED6F00308DEE /* LHCanvasBackgroundView.swift */,
 				71B941542186BA35000091F0 /* LHCanvasViewController.xib */,
 			);
 			path = LHCanvasViewController;
@@ -384,6 +389,7 @@
 			files = (
 				716B021A21882F550030C963 /* LHSlider.swift in Sources */,
 				715425C421870E11009F33F3 /* LHCircleView.swift in Sources */,
+				71FA9BDB218AED6F00308DEE /* LHCanvasBackgroundView.swift in Sources */,
 				71B941A22186C1C4000091F0 /* LHCanvasView.swift in Sources */,
 				71B941A12186C1C1000091F0 /* LHCanvasViewController.swift in Sources */,
 				71B941932186C0F1000091F0 /* ViewController.swift in Sources */,
@@ -401,6 +407,7 @@
 				71B941F02186CB11000091F0 /* LHCanvasViewController.swift in Sources */,
 				715425C521870E11009F33F3 /* LHCircleView.swift in Sources */,
 				71B941E62186C787000091F0 /* MessagesViewController.swift in Sources */,
+				71FA9BDC218AED6F00308DEE /* LHCanvasBackgroundView.swift in Sources */,
 				716B021B21882F550030C963 /* LHSlider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -413,6 +420,7 @@
 				71CE1DBF2183E8D9002C3930 /* LHCanvasView.swift in Sources */,
 				715425C321870E11009F33F3 /* LHCircleView.swift in Sources */,
 				71CF051F21896847009E690D /* LHColorPickerView.swift in Sources */,
+				71FA9BDA218AED6F00308DEE /* LHCanvasBackgroundView.swift in Sources */,
 				71CE1DBD2183E8D9002C3930 /* LHCanvasViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

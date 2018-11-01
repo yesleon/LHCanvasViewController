@@ -16,6 +16,15 @@ public protocol LHCanvasViewControllerDelegate: AnyObject {
 
 open class LHCanvasViewController: UIViewController {
     
+    open override var preferredStatusBarStyle: UIStatusBarStyle {
+        switch navigationBar.barStyle {
+        case .default:
+            return .default
+        case .black, .blackTranslucent:
+            return .lightContent
+        }
+    }
+    
     private var strokeColor: UIColor = .black
     private var strokeWidth: CGFloat = 5
 
@@ -53,6 +62,16 @@ open class LHCanvasViewController: UIViewController {
         navigationBar.shadowImage = UIImage()
         toolBar.setBackgroundImage(UIImage(), forToolbarPosition: .any, barMetrics: .default)
         toolBar.clipsToBounds = true
+    }
+    
+    open override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        DispatchQueue.main.async(execute: setNeedsStatusBarAppearanceUpdate)
+    }
+    
+    open override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
     }
     
     @IBAction private func didPressUndoButton(_ sender: UIBarButtonItem) {
