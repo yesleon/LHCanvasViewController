@@ -66,7 +66,6 @@ open class LHCanvasView: UIView {
         let imageView = LHCanvasView.imageViewClass.init()
         imageView.frame = bounds
         imageView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        addSubview(imageView)
         return imageView
     }()
     
@@ -75,6 +74,8 @@ open class LHCanvasView: UIView {
             return imageView.image
         }
     }
+    
+    open var preferredSize: CGSize = .init(width: 1920, height: 1080)
     
     class var imageViewClass: UIImageView.Type {
         return UIImageView.self
@@ -89,6 +90,8 @@ open class LHCanvasView: UIView {
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTap))
         addGestureRecognizer(tapGesture)
+        
+        addSubview(imageView)
     }
     
     override init(frame: CGRect) {
@@ -118,7 +121,7 @@ open class LHCanvasView: UIView {
         undoManager.setActionName(NSLocalizedString("Draw Line", comment: ""))
         undoManager.registerUndo(withTarget: self) { $0.replaceImage(with: oldImage) }
         
-        UIGraphicsBeginImageContextWithOptions(image?.size ?? CGSize(width: 1920, height: 1080), true, 1)
+        UIGraphicsBeginImageContextWithOptions(image?.size ?? preferredSize, true, 1)
         configureLine()
         penPhase = PenPhase(location: sender.location(in: self), velocity: .zero)
         penPhase = PenPhase(location: sender.location(in: self), velocity: .zero)
@@ -135,7 +138,7 @@ open class LHCanvasView: UIView {
             undoManager.setActionName(NSLocalizedString("Draw Line", comment: ""))
             undoManager.registerUndo(withTarget: self) { $0.replaceImage(with: oldImage) }
             
-            UIGraphicsBeginImageContextWithOptions(image?.size ?? CGSize(width: 1920, height: 1080), true, 1)
+            UIGraphicsBeginImageContextWithOptions(image?.size ?? preferredSize, true, 1)
             configureLine()
             
             currentLocation = sender.location(in: self)
