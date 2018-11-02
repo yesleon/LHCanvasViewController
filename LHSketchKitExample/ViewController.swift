@@ -7,15 +7,11 @@
 //
 
 import UIKit
+import LHSketchKit
 
 class ViewController: UIViewController {
 
     @IBOutlet private weak var imageView: UIImageView!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
 
     @IBAction private func didTapImageView(_ sender: UITapGestureRecognizer) {
         let canvasVC = LHCanvasViewController(image: imageView.image)

@@ -8,11 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		71126A7F218C9CC700ABE1C4 /* LHBrush.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71126A7E218C9CC700ABE1C4 /* LHBrush.swift */; };
-		71126A80218CA67900ABE1C4 /* LHBrush.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71126A7E218C9CC700ABE1C4 /* LHBrush.swift */; };
+		71126A82218CE1E700ABE1C4 /* LHSketchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71CE1DAF2183E8C7002C3930 /* LHSketchKit.framework */; };
+		71126A83218CE1E700ABE1C4 /* LHSketchKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71CE1DAF2183E8C7002C3930 /* LHSketchKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		715425C321870E11009F33F3 /* LHCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715425C221870E11009F33F3 /* LHCircleView.swift */; };
-		715425C421870E11009F33F3 /* LHCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715425C221870E11009F33F3 /* LHCircleView.swift */; };
 		716B021921882F550030C963 /* LHSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716B021821882F550030C963 /* LHSlider.swift */; };
-		716B021A21882F550030C963 /* LHSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716B021821882F550030C963 /* LHSlider.swift */; };
 		71AA1F8E21896B5200B5FC69 /* LHPopoverKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71AA1F8D21896B5200B5FC69 /* LHPopoverKit.framework */; };
 		71B941522186BA35000091F0 /* LHCanvasViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71B941542186BA35000091F0 /* LHCanvasViewController.xib */; };
 		71B941592186BB73000091F0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 71B941572186BB73000091F0 /* Localizable.strings */; };
@@ -21,10 +20,6 @@
 		71B941962186C0F1000091F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71B941942186C0F1000091F0 /* Main.storyboard */; };
 		71B941982186C0F2000091F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71B941972186C0F2000091F0 /* Assets.xcassets */; };
 		71B9419B2186C0F2000091F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71B941992186C0F2000091F0 /* LaunchScreen.storyboard */; };
-		71B941A02186C1BE000091F0 /* LHCanvasViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71B941542186BA35000091F0 /* LHCanvasViewController.xib */; };
-		71B941A12186C1C1000091F0 /* LHCanvasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CE1DBA2183E8D9002C3930 /* LHCanvasViewController.swift */; };
-		71B941A22186C1C4000091F0 /* LHCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CE1DBC2183E8D9002C3930 /* LHCanvasView.swift */; };
-		71B941A32186C1CF000091F0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 71B941572186BB73000091F0 /* Localizable.strings */; };
 		71B941AA2186C26F000091F0 /* LHConvenientMethods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71B941A92186C26F000091F0 /* LHConvenientMethods.framework */; };
 		71B941AB2186C27D000091F0 /* LHConvenientMethods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71B941A92186C26F000091F0 /* LHConvenientMethods.framework */; };
 		71B941AC2186C27D000091F0 /* LHConvenientMethods.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71B941A92186C26F000091F0 /* LHConvenientMethods.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -34,10 +29,18 @@
 		71CE1DBD2183E8D9002C3930 /* LHCanvasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CE1DBA2183E8D9002C3930 /* LHCanvasViewController.swift */; };
 		71CE1DBF2183E8D9002C3930 /* LHCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CE1DBC2183E8D9002C3930 /* LHCanvasView.swift */; };
 		71CF051F21896847009E690D /* LHColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CF051E21896846009E690D /* LHColorPickerView.swift */; };
-		71CF052021896847009E690D /* LHColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CF051E21896846009E690D /* LHColorPickerView.swift */; };
 		71FA9BDA218AED6F00308DEE /* LHCanvasBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FA9BD9218AED6F00308DEE /* LHCanvasBackgroundView.swift */; };
-		71FA9BDB218AED6F00308DEE /* LHCanvasBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FA9BD9218AED6F00308DEE /* LHCanvasBackgroundView.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		71126A84218CE1E700ABE1C4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 71CE1DA62183E8C7002C3930 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 71CE1DAE2183E8C7002C3930;
+			remoteInfo = LHSketchKit;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		71B941A62186C238000091F0 /* Embed Frameworks */ = {
@@ -48,6 +51,7 @@
 			files = (
 				71B941AC2186C27D000091F0 /* LHConvenientMethods.framework in Embed Frameworks */,
 				71C395802189931F005D04F7 /* LHPopoverKit.framework in Embed Frameworks */,
+				71126A83218CE1E700ABE1C4 /* LHSketchKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -102,6 +106,7 @@
 			files = (
 				71B941AB2186C27D000091F0 /* LHConvenientMethods.framework in Frameworks */,
 				71C3957F2189931F005D04F7 /* LHPopoverKit.framework in Frameworks */,
+				71126A82218CE1E700ABE1C4 /* LHSketchKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,6 +222,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				71126A85218CE1E700ABE1C4 /* PBXTargetDependency */,
 			);
 			name = LHSketchKitExample;
 			productName = LHCanvasViewControllerExample;
@@ -284,10 +290,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71B941A32186C1CF000091F0 /* Localizable.strings in Resources */,
 				71B9419B2186C0F2000091F0 /* LaunchScreen.storyboard in Resources */,
 				71B941982186C0F2000091F0 /* Assets.xcassets in Resources */,
-				71B941A02186C1BE000091F0 /* LHCanvasViewController.xib in Resources */,
 				71B941962186C0F1000091F0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -308,14 +312,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71126A80218CA67900ABE1C4 /* LHBrush.swift in Sources */,
-				716B021A21882F550030C963 /* LHSlider.swift in Sources */,
-				715425C421870E11009F33F3 /* LHCircleView.swift in Sources */,
-				71FA9BDB218AED6F00308DEE /* LHCanvasBackgroundView.swift in Sources */,
-				71B941A22186C1C4000091F0 /* LHCanvasView.swift in Sources */,
-				71B941A12186C1C1000091F0 /* LHCanvasViewController.swift in Sources */,
 				71B941932186C0F1000091F0 /* ViewController.swift in Sources */,
-				71CF052021896847009E690D /* LHColorPickerView.swift in Sources */,
 				71B941912186C0F1000091F0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -335,6 +332,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		71126A85218CE1E700ABE1C4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 71CE1DAE2183E8C7002C3930 /* LHSketchKit */;
+			targetProxy = 71126A84218CE1E700ABE1C4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		71B941542186BA35000091F0 /* LHCanvasViewController.xib */ = {
@@ -544,7 +549,7 @@
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = K3ER26RU8S;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -571,7 +576,7 @@
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = K3ER26RU8S;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";

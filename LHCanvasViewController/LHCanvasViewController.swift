@@ -114,6 +114,7 @@ open class LHCanvasViewController: UIViewController {
         let colorPickerView = LHColorPickerView { color in
             self.strokeColor = color
             circleView.color = color
+            circleView.borderColor = color == .white ? .gray : .clear
         }
         colorPickerView.addConstraint(.init(item: colorPickerView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 44 * 5))
         penPanelVC.addManagedView(colorPickerView)
