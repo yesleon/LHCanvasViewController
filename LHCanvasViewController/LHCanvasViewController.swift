@@ -25,8 +25,23 @@ open class LHCanvasViewController: UIViewController {
         }
     }
     
-    private var strokeColor: UIColor = .black
-    private var strokeWidth: CGFloat = 5
+    private lazy var brush = LHBrush()
+    private var strokeColor: UIColor {
+        get {
+            return brush.configuration.strokeColor
+        }
+        set {
+            brush.configuration.strokeColor = newValue
+        }
+    }
+    private var strokeWidth: CGFloat {
+        get {
+            return brush.configuration.lineWidth
+        }
+        set {
+            brush.configuration.lineWidth = newValue
+        }
+    }
 
     @IBOutlet private weak var navigationBar: UINavigationBar!
     @IBOutlet private weak var toolBar: UIToolbar!
@@ -55,6 +70,7 @@ open class LHCanvasViewController: UIViewController {
         super.viewDidLoad()
         
         canvasView.delegate = self
+        brush.canvas = canvasView
         updateButtons()
         navigationBar.delegate = self
         toolBar.delegate = self
@@ -141,11 +157,6 @@ open class LHCanvasViewController: UIViewController {
 }
 
 extension LHCanvasViewController: LHCanvasViewDelegate {
-    
-    public func canvasView(_ canvasView: LHCanvasView, willStrokeWith configurator: LHLineConfigurating) {
-        configurator.setStrokeColor(strokeColor)
-        configurator.setLineWidth(strokeWidth)
-    }
     
     private func updateButtons() {
         saveButton.isEnabled = canvasView.undoManager.canUndo

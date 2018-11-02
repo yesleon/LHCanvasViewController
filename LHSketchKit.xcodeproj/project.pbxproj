@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		71126A7F218C9CC700ABE1C4 /* LHBrush.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71126A7E218C9CC700ABE1C4 /* LHBrush.swift */; };
+		71126A80218CA67900ABE1C4 /* LHBrush.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71126A7E218C9CC700ABE1C4 /* LHBrush.swift */; };
+		71126A81218CA67900ABE1C4 /* LHBrush.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71126A7E218C9CC700ABE1C4 /* LHBrush.swift */; };
 		715425C321870E11009F33F3 /* LHCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715425C221870E11009F33F3 /* LHCircleView.swift */; };
 		715425C421870E11009F33F3 /* LHCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715425C221870E11009F33F3 /* LHCircleView.swift */; };
 		715425C521870E11009F33F3 /* LHCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715425C221870E11009F33F3 /* LHCircleView.swift */; };
@@ -90,6 +93,7 @@
 		711096482184A31900D1F8C5 /* LHMenuController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = LHMenuController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7112660121842F340043A3B8 /* LHColorPickerController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = LHColorPickerController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7112661D218475D60043A3B8 /* LHUndoMenuController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = LHUndoMenuController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		71126A7E218C9CC700ABE1C4 /* LHBrush.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHBrush.swift; sourceTree = "<group>"; };
 		715425C221870E11009F33F3 /* LHCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHCircleView.swift; sourceTree = "<group>"; };
 		716B021821882F550030C963 /* LHSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHSlider.swift; sourceTree = "<group>"; };
 		71AA1F8D21896B5200B5FC69 /* LHPopoverKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = LHPopoverKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -229,6 +233,7 @@
 				71CE1DB22183E8C7002C3930 /* LHSketchKit.h */,
 				71CF051E21896846009E690D /* LHColorPickerView.swift */,
 				71CE1DBC2183E8D9002C3930 /* LHCanvasView.swift */,
+				71126A7E218C9CC700ABE1C4 /* LHBrush.swift */,
 				715425C221870E11009F33F3 /* LHCircleView.swift */,
 				716B021821882F550030C963 /* LHSlider.swift */,
 				71CE1DB32183E8C7002C3930 /* Info.plist */,
@@ -387,6 +392,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71126A80218CA67900ABE1C4 /* LHBrush.swift in Sources */,
 				716B021A21882F550030C963 /* LHSlider.swift in Sources */,
 				715425C421870E11009F33F3 /* LHCircleView.swift in Sources */,
 				71FA9BDB218AED6F00308DEE /* LHCanvasBackgroundView.swift in Sources */,
@@ -402,6 +408,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71126A81218CA67900ABE1C4 /* LHBrush.swift in Sources */,
 				71CF052121896847009E690D /* LHColorPickerView.swift in Sources */,
 				71B941F12186CB31000091F0 /* LHCanvasView.swift in Sources */,
 				71B941F02186CB11000091F0 /* LHCanvasViewController.swift in Sources */,
@@ -416,6 +423,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71126A7F218C9CC700ABE1C4 /* LHBrush.swift in Sources */,
 				716B021921882F550030C963 /* LHSlider.swift in Sources */,
 				71CE1DBF2183E8D9002C3930 /* LHCanvasView.swift in Sources */,
 				715425C321870E11009F33F3 /* LHCircleView.swift in Sources */,
