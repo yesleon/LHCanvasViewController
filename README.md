@@ -7,6 +7,11 @@ LHSketchKit is a swift framework for building drawing apps.
 1. Use the Open in Xcode button to import the framework into you project/workspace.
 2. Add the framework to your project’s Embedded Binaries.
 
+## Dependencies
+
+- [LHPopoverKit](https://github.com/yesleon/LHPopoverKit) 0.1
+- [LHConvenientMethods](https://github.com/yesleon/LHConvenientMethods) 0.2
+
 ## Usage
 
 ```swift
