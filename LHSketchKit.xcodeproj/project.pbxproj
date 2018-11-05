@@ -10,6 +10,7 @@
 		71126A7F218C9CC700ABE1C4 /* LHBrush.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71126A7E218C9CC700ABE1C4 /* LHBrush.swift */; };
 		71126A82218CE1E700ABE1C4 /* LHSketchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71CE1DAF2183E8C7002C3930 /* LHSketchKit.framework */; };
 		71126A83218CE1E700ABE1C4 /* LHSketchKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71CE1DAF2183E8C7002C3930 /* LHSketchKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7121AA9721903B840094CB2C /* LHZoomTransitionKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7121AA9621903B840094CB2C /* LHZoomTransitionKit.framework */; };
 		715425C321870E11009F33F3 /* LHCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715425C221870E11009F33F3 /* LHCircleView.swift */; };
 		716B021921882F550030C963 /* LHSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716B021821882F550030C963 /* LHSlider.swift */; };
 		71AA1F8E21896B5200B5FC69 /* LHPopoverKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71AA1F8D21896B5200B5FC69 /* LHPopoverKit.framework */; };
@@ -73,6 +74,7 @@
 		7112660121842F340043A3B8 /* LHColorPickerController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = LHColorPickerController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7112661D218475D60043A3B8 /* LHUndoMenuController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = LHUndoMenuController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71126A7E218C9CC700ABE1C4 /* LHBrush.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHBrush.swift; sourceTree = "<group>"; };
+		7121AA9621903B840094CB2C /* LHZoomTransitionKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = LHZoomTransitionKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		715425C221870E11009F33F3 /* LHCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHCircleView.swift; sourceTree = "<group>"; };
 		716B021821882F550030C963 /* LHSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHSlider.swift; sourceTree = "<group>"; };
 		71AA1F8D21896B5200B5FC69 /* LHPopoverKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = LHPopoverKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,6 +116,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7121AA9721903B840094CB2C /* LHZoomTransitionKit.framework in Frameworks */,
 				71AA1F8E21896B5200B5FC69 /* LHPopoverKit.framework in Frameworks */,
 				71B941AA2186C26F000091F0 /* LHConvenientMethods.framework in Frameworks */,
 			);
@@ -125,6 +128,7 @@
 		7112660021842F340043A3B8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7121AA9621903B840094CB2C /* LHZoomTransitionKit.framework */,
 				71AA1F8D21896B5200B5FC69 /* LHPopoverKit.framework */,
 				71BB051E218814A900F3C8E0 /* LHPopoverViewController.framework */,
 				71B941A92186C26F000091F0 /* LHConvenientMethods.framework */,

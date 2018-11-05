@@ -8,10 +8,16 @@
 
 import UIKit
 import LHPopoverKit
+import LHZoomTransitionKit
 
 public protocol LHCanvasViewControllerDelegate: AnyObject {
     func canvasViewController(_ canvasVC: LHCanvasViewController, didSave image: UIImage)
     func canvasViewControllerDidCancel(_ canvasVC: LHCanvasViewController)
+    func zoomTargetView(for canvasVC: LHCanvasViewController) -> UIView?
+}
+
+extension LHCanvasViewControllerDelegate {
+    func zoomTargetView(for canvasVC: LHCanvasViewController) -> UIView? { return nil }
 }
 
 open class LHCanvasViewController: UIViewController {
@@ -42,6 +48,17 @@ open class LHCanvasViewController: UIViewController {
             brush.configuration.lineWidth = newValue
         }
     }
+    
+    open var image: UIImage? {
+        didSet {
+            if let image = image {
+                loadViewIfNeeded()
+                canvasView.undoManager.disableUndoRegistration()
+                canvasView.replaceImage(with: image)
+                canvasView.undoManager.enableUndoRegistration()
+            }
+        }
+    }
 
     @IBOutlet private weak var navigationBar: UINavigationBar!
     @IBOutlet private weak var toolBar: UIToolbar!
@@ -52,18 +69,18 @@ open class LHCanvasViewController: UIViewController {
     
     weak open var delegate: LHCanvasViewControllerDelegate?
     
-    public init(image: UIImage?) {
+    private func initialize() {
+        transitioningDelegate = self
+    }
+    
+    public init() {
         super.init(nibName: nil, bundle: Bundle.init(for: LHCanvasViewController.self))
-        if let image = image {
-            loadViewIfNeeded()
-            canvasView.undoManager.disableUndoRegistration()
-            canvasView.replaceImage(with: image)
-            canvasView.undoManager.enableUndoRegistration()
-        }
+        initialize()
     }
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        initialize()
     }
     
     override open func viewDidLoad() {
@@ -83,11 +100,6 @@ open class LHCanvasViewController: UIViewController {
     open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         DispatchQueue.main.async(execute: setNeedsStatusBarAppearanceUpdate)
-    }
-    
-    open override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
     }
     
     @IBAction private func didPressUndoButton(_ sender: UIBarButtonItem) {
@@ -179,6 +191,51 @@ extension LHCanvasViewController: UINavigationBarDelegate, UIToolbarDelegate {
         } else {
             return .any
         }
+    }
+    
+}
+
+extension LHCanvasViewController: UIViewControllerTransitioningDelegate {
+    
+    public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        if delegate?.zoomTargetView(for: self) != nil {
+            return LHZoomTransitionAnimationController(duration: 0.4, dampingRatio: 0.8, source: self, destination: self)
+        } else {
+            return nil
+        }
+    }
+    
+    public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        if delegate?.zoomTargetView(for: self) != nil {
+            return LHZoomTransitionAnimationController(duration: 0.4, dampingRatio: 1, source: self, destination: self)
+        } else {
+            return nil
+        }
+    }
+    
+}
+
+extension LHCanvasViewController: LHZoomTransitionTargetProviding {
+    
+    public func targetView(for animationController: LHZoomTransitionAnimationController, operation: LHZoomTransitionAnimationController.Operation, viewControllerKey: UITransitionContextViewControllerKey) -> UIView? {
+        switch (operation, viewControllerKey) {
+        case (.present, .to), (.dismiss, .from):
+            return canvasView
+        case (.present, .from), (.dismiss, .to):
+            return delegate?.zoomTargetView(for: self)
+        default:
+            return nil
+        }
+    }
+    
+    public func animationController(_ animationController: LHZoomTransitionAnimationController, willAnimate operation: LHZoomTransitionAnimationController.Operation) {
+        canvasView.alpha = 0
+        delegate?.zoomTargetView(for: self)?.alpha = 0
+    }
+    
+    public func animationController(_ animationController: LHZoomTransitionAnimationController, didAnimate operation: LHZoomTransitionAnimationController.Operation) {
+        canvasView.alpha = 1
+        delegate?.zoomTargetView(for: self)?.alpha = 1
     }
     
 }
