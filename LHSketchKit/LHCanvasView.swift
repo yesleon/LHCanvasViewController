@@ -9,6 +9,8 @@
 import UIKit
 import LHConvenientMethods
 
+private let bundle = Bundle(identifier: "com.narrativesaw.LHSketchKit")!
+
 public protocol LHCanvasViewDelegate: AnyObject {
     func canvasViewDidChange(_ canvasView: LHCanvasView)
 }
@@ -121,7 +123,7 @@ extension LHCanvasView: LHBrushable {
     
     public func brushWillDraw(_ brush: LHBrush) {
         let oldImage = imageView.image
-        undoManager.setActionName(NSLocalizedString("Draw Line", comment: ""))
+        undoManager.setActionName(NSLocalizedString("Draw Line", bundle: bundle, comment: ""))
         undoManager.registerUndo(withTarget: self) { $0.replaceImage(with: oldImage) }
         
         UIGraphicsBeginImageContextWithOptions(image?.size ?? preferredSize, true, 1)

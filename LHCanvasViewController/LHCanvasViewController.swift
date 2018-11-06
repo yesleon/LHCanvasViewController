@@ -10,6 +10,8 @@ import UIKit
 import LHPopoverKit
 import LHZoomTransitionKit
 
+private let bundle = Bundle(identifier: "com.narrativesaw.LHSketchKit")!
+
 public protocol LHCanvasViewControllerDelegate: AnyObject {
     func canvasViewController(_ canvasVC: LHCanvasViewController, didSave image: UIImage)
     func canvasViewControllerDidCancel(_ canvasVC: LHCanvasViewController)
@@ -155,7 +157,7 @@ open class LHCanvasViewController: UIViewController {
     }
     
     @IBAction private func didPressClearButton(_ sender: UIBarButtonItem) {
-        canvasView.replaceImage(with: nil, actionName: NSLocalizedString("Clear Canvas", comment: ""))
+        canvasView.replaceImage(with: nil, actionName: NSLocalizedString("Clear Canvas", bundle: bundle, comment: ""))
     }
     
     @IBAction private func didPressCancelButton(_ sender: Any) {
