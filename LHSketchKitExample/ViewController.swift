@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet private weak var imageView: UIImageView!
 
     @IBAction private func didTapImageView(_ sender: UITapGestureRecognizer) {
-        let canvasVC = LHCanvasViewController(image: imageView.image)
+        let canvasVC = LHCanvasViewController()
         canvasVC.delegate = self
         present(canvasVC, animated: true, completion: nil)
     }
@@ -22,6 +22,10 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: LHCanvasViewControllerDelegate {
+    
+    func zoomTargetView(for canvasVC: LHCanvasViewController) -> UIView? {
+        return nil
+    }
     
     func canvasViewController(_ canvasVC: LHCanvasViewController, didSave image: UIImage) {
         imageView.image = image

@@ -17,7 +17,11 @@ public protocol LHCanvasViewDelegate: AnyObject {
 
 open class LHCanvasView: UIView {
     
-    private lazy var localUndoManager = UndoManager()
+    private lazy var localUndoManager: UndoManager = {
+        let manager = UndoManager()
+        manager.levelsOfUndo = 100
+        return manager
+    }()
     open weak var delegate: LHCanvasViewDelegate?
     
     override open var undoManager: UndoManager! {

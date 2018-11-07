@@ -13,6 +13,8 @@
 		7121AA9721903B840094CB2C /* LHZoomTransitionKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7121AA9621903B840094CB2C /* LHZoomTransitionKit.framework */; };
 		715425C321870E11009F33F3 /* LHCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715425C221870E11009F33F3 /* LHCircleView.swift */; };
 		716B021921882F550030C963 /* LHSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716B021821882F550030C963 /* LHSlider.swift */; };
+		71A955D821935B50006276CD /* LHZoomTransitionKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7121AA9621903B840094CB2C /* LHZoomTransitionKit.framework */; };
+		71A955D921935B50006276CD /* LHZoomTransitionKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7121AA9621903B840094CB2C /* LHZoomTransitionKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		71AA1F8E21896B5200B5FC69 /* LHPopoverKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71AA1F8D21896B5200B5FC69 /* LHPopoverKit.framework */; };
 		71B941522186BA35000091F0 /* LHCanvasViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71B941542186BA35000091F0 /* LHCanvasViewController.xib */; };
 		71B941592186BB73000091F0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 71B941572186BB73000091F0 /* Localizable.strings */; };
@@ -51,6 +53,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				71B941AC2186C27D000091F0 /* LHConvenientMethods.framework in Embed Frameworks */,
+				71A955D921935B50006276CD /* LHZoomTransitionKit.framework in Embed Frameworks */,
 				71C395802189931F005D04F7 /* LHPopoverKit.framework in Embed Frameworks */,
 				71126A83218CE1E700ABE1C4 /* LHSketchKit.framework in Embed Frameworks */,
 			);
@@ -107,6 +110,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				71B941AB2186C27D000091F0 /* LHConvenientMethods.framework in Frameworks */,
+				71A955D821935B50006276CD /* LHZoomTransitionKit.framework in Frameworks */,
 				71C3957F2189931F005D04F7 /* LHPopoverKit.framework in Frameworks */,
 				71126A82218CE1E700ABE1C4 /* LHSketchKit.framework in Frameworks */,
 			);
