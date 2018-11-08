@@ -32,6 +32,7 @@
 		71CE1DBD2183E8D9002C3930 /* LHCanvasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CE1DBA2183E8D9002C3930 /* LHCanvasViewController.swift */; };
 		71CE1DBF2183E8D9002C3930 /* LHCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CE1DBC2183E8D9002C3930 /* LHCanvasView.swift */; };
 		71CF051F21896847009E690D /* LHColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CF051E21896846009E690D /* LHColorPickerView.swift */; };
+		71E244B82193DC0600BC1041 /* LHLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E244B72193DC0600BC1041 /* LHLine.swift */; };
 		71FA9BDA218AED6F00308DEE /* LHCanvasBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FA9BD9218AED6F00308DEE /* LHCanvasBackgroundView.swift */; };
 /* End PBXBuildFile section */
 
@@ -101,6 +102,7 @@
 		71CE1DBC2183E8D9002C3930 /* LHCanvasView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LHCanvasView.swift; sourceTree = "<group>"; };
 		71CE1DC02183E92B002C3930 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		71CF051E21896846009E690D /* LHColorPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LHColorPickerView.swift; sourceTree = "<group>"; };
+		71E244B72193DC0600BC1041 /* LHLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHLine.swift; sourceTree = "<group>"; };
 		71FA9BD9218AED6F00308DEE /* LHCanvasBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHCanvasBackgroundView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -195,6 +197,7 @@
 				71CF051E21896846009E690D /* LHColorPickerView.swift */,
 				71CE1DBC2183E8D9002C3930 /* LHCanvasView.swift */,
 				71126A7E218C9CC700ABE1C4 /* LHBrush.swift */,
+				71E244B72193DC0600BC1041 /* LHLine.swift */,
 				715425C221870E11009F33F3 /* LHCircleView.swift */,
 				716B021821882F550030C963 /* LHSlider.swift */,
 				71CE1DB32183E8C7002C3930 /* Info.plist */,
@@ -332,6 +335,7 @@
 				71126A7F218C9CC700ABE1C4 /* LHBrush.swift in Sources */,
 				716B021921882F550030C963 /* LHSlider.swift in Sources */,
 				71CE1DBF2183E8D9002C3930 /* LHCanvasView.swift in Sources */,
+				71E244B82193DC0600BC1041 /* LHLine.swift in Sources */,
 				715425C321870E11009F33F3 /* LHCircleView.swift in Sources */,
 				71CF051F21896847009E690D /* LHColorPickerView.swift in Sources */,
 				71FA9BDA218AED6F00308DEE /* LHCanvasBackgroundView.swift in Sources */,

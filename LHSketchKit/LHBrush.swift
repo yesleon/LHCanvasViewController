@@ -12,38 +12,20 @@ import LHConvenientMethods
 public protocol LHBrushable: AnyObject {
     func addGestureRecognizer(_ gestureRecognizer: UIGestureRecognizer)
     func brushWillDraw(_ brush: LHBrush)
-    func brush(_ brush: LHBrush, drawLineFrom startPhase: LHBrush.Phase, to endPhase: LHBrush.Phase)
+    func brush(_ brush: LHBrush, draw lineSegment: LHLineSegment)
     func brushDidDraw(_ brush: LHBrush)
 }
 
 public class LHBrush: NSObject {
     
-    public struct Configuration {
-        public var lineCap: CGLineCap
-        public var strokeColor: UIColor
-        public var alpha: CGFloat
-        public var lineWidth: CGFloat
-    }
-    
-    public struct Phase {
-        public var location: CGPoint
-        public var velocity: CGPoint
-        
-        public func controlPoint(handleLength: CGFloat) -> CGPoint {
-            let handleAngle = CGVector(point: velocity).angle()
-            let handle = CGVector(angle: handleAngle) * handleLength
-            return location.applying(handle)
-        }
-    }
-    
-    public var configuration = Configuration(lineCap: .round, strokeColor: .black, alpha: 1, lineWidth: 5)
+    public var configuration = LHLineConfiguration(lineCap: .round, strokeColor: .black, alpha: 1, lineWidth: 5)
     private var currentLocation: CGPoint = .zero
-    private var phase: Phase? {
+    private var phase: LHLinePhase? {
         didSet {
             guard let canvas = canvas else { return }
             if let endPhase = phase {
                 if let startPhase = oldValue {
-                    canvas.brush(self, drawLineFrom: startPhase, to: endPhase)
+                    canvas.brush(self, draw: .init(startPhase: startPhase, endPhase: endPhase))
                 } else {
                     canvas.brushWillDraw(self)
                 }
@@ -71,8 +53,8 @@ public class LHBrush: NSObject {
     @objc private func didTap(_ sender: UITapGestureRecognizer) {
         guard let view = sender.view else { return }
         
-        phase = Phase(location: sender.location(in: view), velocity: .zero)
-        phase = Phase(location: sender.location(in: view), velocity: .zero)
+        phase = LHLinePhase(location: sender.location(in: view), velocity: .zero)
+        phase = LHLinePhase(location: sender.location(in: view), velocity: .zero)
         phase = nil
     }
     
@@ -81,10 +63,10 @@ public class LHBrush: NSObject {
         switch sender.state {
         case .began:
             currentLocation = sender.location(in: view)
-            phase = Phase(location: currentLocation, velocity: sender.velocity(in: view))
+            phase = LHLinePhase(location: currentLocation, velocity: sender.velocity(in: view))
             
         case .changed:
-            phase = Phase(location: currentLocation, velocity: sender.velocity(in: view))
+            phase = LHLinePhase(location: currentLocation, velocity: sender.velocity(in: view))
             currentLocation = sender.location(in: view)
             
         case .ended, .cancelled:

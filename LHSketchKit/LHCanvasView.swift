@@ -28,12 +28,8 @@ open class LHCanvasView: UIView {
         return localUndoManager
     }
     
-    override open var canBecomeFirstResponder: Bool {
-        return true
-    }
-    
-    private lazy var imageView: UIImageView = {
-        let imageView = LHCanvasView.imageViewClass.init()
+    private lazy var backingImageView: UIImageView = {
+        let imageView = UIImageView()
         imageView.frame = bounds
         imageView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         return imageView
@@ -41,18 +37,14 @@ open class LHCanvasView: UIView {
     
     open var image: UIImage? {
         get {
-            return imageView.image
+            return backingImageView.image
         }
     }
     
     open var preferredSize: CGSize = .init(width: 1920, height: 1080)
     
-    class var imageViewClass: UIImageView.Type {
-        return UIImageView.self
-    }
-    
     private func initialize() {
-        addSubview(imageView)
+        addSubview(backingImageView)
     }
     
     override init(frame: CGRect) {
@@ -65,52 +57,9 @@ open class LHCanvasView: UIView {
         initialize()
     }
     
-    override open func didMoveToSuperview() {
-        super.didMoveToSuperview()
-        becomeFirstResponder()
-    }
-    
-    override open func willMove(toSuperview newSuperview: UIView?) {
-        super.willMove(toSuperview: newSuperview)
-        if newSuperview == nil {
-            resignFirstResponder()
-        }
-    }
-    
-    private func configureLine(in context: CGContext, with configuration: LHBrush.Configuration) {
-        context.setLineCap(configuration.lineCap)
-        context.setStrokeColor(configuration.strokeColor.cgColor)
-        context.setAlpha(configuration.alpha)
-        context.setLineJoin(.round)
-        context.setLineWidth(configuration.lineWidth)
-    }
-
-    private func drawLine(from startPhase: LHBrush.Phase, to endPhase: LHBrush.Phase) {
-        guard let context = UIGraphicsGetCurrentContext() else { return }
-        let rect = CGRect(x: 0, y: 0, width: context.width, height: context.height)
-        let ratio = rect.width / imageView.bounds.width
-        if let image = imageView.image {
-            image.draw(in: rect)
-        } else {
-            context.setFillColor(UIColor.white.cgColor)
-            context.fill(rect)
-        }
-
-        let startPoint = startPhase.location * ratio
-        let endPoint = endPhase.location * ratio
-        let control1 = startPhase.controlPoint(handleLength: CGVector(point: startPhase.velocity).distance() / 250) * ratio
-        let control2 = endPhase.controlPoint(handleLength: -CGVector(point: endPhase.velocity).distance() / 250) * ratio
-
-        context.move(to: startPoint)
-        context.addCurve(to: endPoint, control1: control1, control2: control2)
-        context.strokePath()
-
-        imageView.image = UIGraphicsGetImageFromCurrentImageContext()
-    }
-    
     open func replaceImage(with image: UIImage?, actionName: String? = nil) {
-        let oldImage = imageView.image
-        imageView.image = image
+        let oldImage = backingImageView.image
+        backingImageView.image = image
         
         if let actionName = actionName {
             undoManager.setActionName(actionName)
@@ -126,18 +75,33 @@ open class LHCanvasView: UIView {
 extension LHCanvasView: LHBrushable {
     
     public func brushWillDraw(_ brush: LHBrush) {
-        let oldImage = imageView.image
+        let oldImage = backingImageView.image
         undoManager.setActionName(NSLocalizedString("Draw Line", bundle: bundle, comment: ""))
         undoManager.registerUndo(withTarget: self) { $0.replaceImage(with: oldImage) }
         
         UIGraphicsBeginImageContextWithOptions(image?.size ?? preferredSize, true, 1)
-        if let context = UIGraphicsGetCurrentContext() {
-            configureLine(in: context, with: brush.configuration)
-        }
     }
     
-    public func brush(_ brush: LHBrush, drawLineFrom startPhase: LHBrush.Phase, to endPhase: LHBrush.Phase) {
-        drawLine(from: startPhase, to: endPhase)
+    public func brush(_ brush: LHBrush, draw lineSegment: LHLineSegment) {
+        if let context = UIGraphicsGetCurrentContext() {
+            let rect = CGRect(x: 0, y: 0, width: context.width, height: context.height)
+            if let image = backingImageView.image {
+                image.draw(in: rect)
+            } else {
+                context.setFillColor(UIColor.white.cgColor)
+                context.fill(rect)
+            }
+            
+            let ratio = rect.width / backingImageView.bounds.width
+            var configuration = brush.configuration
+            configuration.lineWidth /= ratio
+            context.configureLine(with: configuration)
+            context.scaleBy(x: ratio, y: ratio)
+            context.drawLineSegment(lineSegment)
+            context.scaleBy(x: 1/ratio, y: 1/ratio)
+            
+            backingImageView.image = UIGraphicsGetImageFromCurrentImageContext()
+        }
     }
     
     public func brushDidDraw(_ brush: LHBrush) {
