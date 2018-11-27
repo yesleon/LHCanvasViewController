@@ -17,23 +17,20 @@ public protocol LHCanvasViewDelegate: AnyObject {
 
 open class LHCanvasView: UIView {
     
-    private lazy var localUndoManager: UndoManager = {
-        let manager = UndoManager()
-        manager.levelsOfUndo = 100
-        return manager
-    }()
+    private lazy var localUndoManager = UndoManager {
+        $0.levelsOfUndo = 100
+    }
     open weak var delegate: LHCanvasViewDelegate?
     
     override open var undoManager: UndoManager! {
         return localUndoManager
     }
     
-    private lazy var backingImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.frame = bounds
-        imageView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        return imageView
-    }()
+    private lazy var backingImageView = UIImageView {
+        $0.frame = bounds
+        $0.contentMode = .scaleAspectFit
+        $0.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+    }
     
     open var image: UIImage? {
         get {
@@ -79,17 +76,16 @@ extension LHCanvasView: LHBrushable {
         undoManager.setActionName(NSLocalizedString("Draw Line", bundle: bundle, comment: ""))
         undoManager.registerUndo(withTarget: self) { $0.replaceImage(with: oldImage) }
         
-        UIGraphicsBeginImageContextWithOptions(image?.size ?? preferredSize, true, 1)
+        UIGraphicsBeginImageContextWithOptions(preferredSize, true, 1)
     }
     
     public func brush(_ brush: LHBrush, draw lineSegment: LHLineSegment) {
         if let context = UIGraphicsGetCurrentContext() {
             let rect = CGRect(x: 0, y: 0, width: context.width, height: context.height)
+            context.setFillColor(UIColor.white.cgColor)
+            context.fill(rect)
             if let image = backingImageView.image {
-                image.draw(in: rect)
-            } else {
-                context.setFillColor(UIColor.white.cgColor)
-                context.fill(rect)
+                image.drawAspectFit(in: rect)
             }
             
             let ratio = rect.width / backingImageView.bounds.width
