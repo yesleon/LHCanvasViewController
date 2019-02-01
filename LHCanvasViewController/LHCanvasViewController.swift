@@ -105,7 +105,7 @@ open class LHCanvasViewController: UIViewController {
     }
     
     @IBAction private func didPressUndoButton(_ sender: UIBarButtonItem) {
-        presentUndoMenu(undoManager: canvasView.undoManager, popoverSource: .barButtonItem(sender))
+        presentUndoMenu(for: canvasView.undoManager, popoverSource: .barButtonItem(sender))
     }
     
     private func makePenPanelViewController(popoverSource: LHPopoverSource) -> UIViewController {

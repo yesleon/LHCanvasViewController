@@ -17,20 +17,23 @@ public protocol LHCanvasViewDelegate: AnyObject {
 
 open class LHCanvasView: UIView {
     
-    private lazy var localUndoManager = UndoManager {
-        $0.levelsOfUndo = 100
-    }
+    private lazy var localUndoManager: UndoManager = {
+        let manager = UndoManager()
+        manager.levelsOfUndo = 100
+        return manager
+    }()
     open weak var delegate: LHCanvasViewDelegate?
     
     override open var undoManager: UndoManager! {
         return localUndoManager
     }
     
-    private lazy var backingImageView = UIImageView {
-        $0.frame = bounds
-        $0.contentMode = .scaleAspectFit
-        $0.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-    }
+    private lazy var backingImageView: UIImageView = {
+        let view = UIImageView(frame: bounds)
+        view.contentMode = .scaleAspectFit
+        view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        return view
+    }()
     
     open var image: UIImage? {
         get {
