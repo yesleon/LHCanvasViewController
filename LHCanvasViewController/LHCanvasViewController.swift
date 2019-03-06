@@ -230,14 +230,18 @@ extension LHCanvasViewController: LHZoomTransitionTargetProviding {
         }
     }
     
-    public func animationController(_ animationController: LHZoomTransitionAnimationController, willAnimate operation: LHZoomTransitionAnimationController.Operation) {
+    public func animationController(_ animationController: LHZoomTransitionAnimationController, willAnimate operation: LHZoomTransitionAnimationController.Operation, with animator: UIViewImplicitlyAnimating) {
+        let canvasView = self.canvasView!
         canvasView.alpha = 0
-        delegate?.zoomTargetView(for: self)?.alpha = 0
-    }
-    
-    public func animationController(_ animationController: LHZoomTransitionAnimationController, didAnimate operation: LHZoomTransitionAnimationController.Operation) {
-        canvasView.alpha = 1
-        delegate?.zoomTargetView(for: self)?.alpha = 1
+        animator.addCompletion? { _ in
+            canvasView.alpha = 1
+        }
+        if let view = delegate?.zoomTargetView(for: self) {
+            view.alpha = 0
+            animator.addCompletion? { _ in
+                view.alpha = 1
+            }
+        }
     }
     
 }
